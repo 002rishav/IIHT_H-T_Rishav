@@ -1,0 +1,7 @@
+<h2 class="h2">Employee Name: {{employee.name | uppercase}}</h2>
+<h2 class="h2">Employee Salary: {{employee.BaseSalary | currency: "EUR"}}</h2>
+<h2 class="h2">Joined Team On: {{employee.JoinedOn | date}}</h2>
+<h2 class="h2">Qualification: {{employee.Qualification | lowercase}}</h2>
+<h2 class="h2">Winning Percentage: {{employee.WinningPercentage | percent}}</h2>
+<p class="p1">About: {{employee.About | ellipsis:param}}</p>
+<button type="button" style="margin-left: 25px; margin-top: 20px;" (click)="param = 'full'" class="btn btn-outline-warning">Show Full Data</button>

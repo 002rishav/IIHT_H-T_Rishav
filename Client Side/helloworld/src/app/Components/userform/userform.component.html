@@ -1,0 +1,41 @@
+<div>
+    <h2>{{title}}</h2>
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" id="inputGroup-sizing-lg">FirstName</span>
+        <input [(ngModel)]="user.firstName" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <br>
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" id="inputGroup-sizing-lg">LastName</span>
+        <input [(ngModel)]="user.lastName" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <br>
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Email</span>
+        <input [(ngModel)]="user.email" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <br>
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Age</span>
+        <input [(ngModel)]="user.age" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+    </div>
+    <br>
+    <span style="margin: 25px;">Gender</span>
+    <div style="margin: 25px;" class="form-check">
+        <input [(ngModel)]="user.gender" value="male" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            Male
+        </label>
+    </div>
+    <div style="margin: 25px;" class="form-check">
+        <input [(ngModel)]="user.gender" value="female" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+        <label class="form-check-label" for="flexRadioDefault2">
+            Female
+        </label>
+    </div>
+    <button (click)="save()" class="btn btn-primary btn-lg" type="button">Submit</button>
+</div>

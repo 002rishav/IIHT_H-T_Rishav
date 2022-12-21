@@ -1,0 +1,14 @@
+.display-2{
+    text-align: center;
+    border-color: bisque;
+    border-style: double;
+    background-color: blue;
+    color: bisque;
+    font-weight: 600;
+}
+.list-group{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 100px;
+
+}

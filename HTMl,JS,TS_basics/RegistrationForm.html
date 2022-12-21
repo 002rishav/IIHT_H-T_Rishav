@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="RegistrationForm.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</head>
+<body bgcolor="#3F69E0" class="container">
+    <!-- div for registration form -->
+    <div style="border: 2px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color:whitesmoke; margin-left:200px; margin-right:200px; margin-top:60px;" >
+        <label style="font-size: 35px; margin-left:40px"><u style="text-decoration-color:green">Re</u>gistration</label>
+        <!-- div for personal details -->
+        <form action="thanks.html" id="reg_form">
+        <div style="margin-top: 10px;">
+            <label style="font-size: 25px; margin-left:40px; color:#888A8F;">Personal Details</label>
+            <!-- different fields for entering the personal data -->
+            <div style="margin-top: 5px;">
+                <label for="fullname" style="font-size: 20px; margin-left:40px;">Full Name</label>
+                <label for="dob" style="font-size: 20px; margin-left:257px;">Date of Birth</label>
+                <label for="email" style="font-size: 20px; margin-left:238px;">Email</label>
+                <br/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="fullname" required placeholder="Enter your name"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="date" id="dob" required placeholder="Enter your birth date"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-right:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="email"required placeholder="Enter your email"/>
+                <br/>
+            </div>
+            
+            <div style="margin-top: 5px;">
+                <label for="mobile" style="font-size: 20px; margin-left:40px;">Mobile number</label>
+                <label for="gender" style="font-size: 20px; margin-left:210px;" for="gender">Gender</label>
+                <label for="occupation" style="font-size: 20px; margin-left:285px;">Occupation</label>
+                <br/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="mobile" required placeholder="Enter your mobile number"/>
+                <select style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="checkbox" id="gender" required name="gender">
+                    <option value="select gender" selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-right:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="occupation" required placeholder="Enter your occupation"/>
+                <br/>
+            </div>
+        </div>
+        <!-- div for identity details -->
+        <div style="margin-top: 10px;">
+            <label style="font-size: 25px; margin-left:40px; color:#888A8F;">Identity Details</label>
+            <!-- different fields for entering the identity data -->
+            <div style="margin-top: 5px;">
+                <label for="id_type" style="font-size: 20px; margin-left:40px;">ID Type</label>
+                <label for="id_num" style="font-size: 20px; margin-left:280px;">ID Number</label>
+                <label for="issue_auth" style="font-size: 20px; margin-left:250px;">Issue Authority</label>
+                <br/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="id_type" required placeholder="Enter ID type"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="id_num" required placeholder="Enter ID number"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-right:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="issue_auth" required placeholder="Enter issue department"/>
+                <br/>
+            </div>
+            
+            <div style="margin-top: 5px;">
+                <label for="issue_date" style="font-size: 20px; margin-left:40px;">Issue Date</label>
+                <label for="issue_state" style="font-size: 20px; margin-left:255px;">Issue State</label>
+                <label for="expiry_date" style="font-size: 20px; margin-left:255px;">Expiry Date</label>
+                <br/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="date" id="issue_date" required placeholder="Enter ID issue date"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-top:5px; width: 300px; height: 30px;" type="text" id="issue_state" required placeholder="Enter ID issue state"/>
+                <input style="margin-bottom: 5px; margin-left:40px; margin-right:40px; margin-top:5px; width: 300px; height: 30px;" type="date" id="expiry_date" required placeholder="Enter ID expiry date"/>
+                <br/>
+            </div>
+        
+        </div>
+        <!-- button for submitting the form and showing the data on console -->
+        <button style="margin-left:40px; margin-top:10px; margin-bottom: 15px; height:30px;width:200px; background-color: #3F69E0; color:whitesmoke;" onclick="display()" >Next &#8594</button>
+    </form>
+    </div>
+    
+</body>
+</html>

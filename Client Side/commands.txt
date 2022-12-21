@@ -1,0 +1,3 @@
+npx json-server --watch db.json --port 5000  -  start json server
+
+npm i json-server -g  -  install json server
