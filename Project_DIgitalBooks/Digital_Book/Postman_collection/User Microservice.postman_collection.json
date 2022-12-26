@@ -1,0 +1,685 @@
+{
+	"info": {
+		"_postman_id": "95ac5147-c00f-4e4c-b1dd-246f7fb3bac9",
+		"name": "User Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add new Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\":\"User\",\r\n    \"roleDescription\":\"User role for normal access\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/createNewRole",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"createNewRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"Kumar12\",\r\n    \"userFirstName\":\"Rahul\",\r\n    \"userLastName\":\"Kumar\",\r\n    \"userPassword\":\"pass@word2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/registerNewUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"registerNewUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"Prakash12\",\r\n    \"userFirstName\":\"Prakash\",\r\n    \"userLastName\":\"Roy\",\r\n    \"userPassword\":\"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/registerNewAdmin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"registerNewAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Jwt token for admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"Prakash12\",\r\n    \"userPassword\":\"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Jwt token for user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"Kumar12\",\r\n    \"userPassword\":\"pass@word2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user Url access",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MTE5MTc0MCwiaWF0IjoxNjcxMTczNzQwfQ.XHuSxu3tgbSDfwCC1c3JzP2sumjCYKvzC9v1j58_iBVLca8IZI6mrZKz2uxPD-4Blse9pM-IVc6V9SinYhEXMQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDcxMzIzNiwiaWF0IjoxNjcwNjk1MjM2fQ.MCmLLxwnmdY89J5j0g0WQXN-5b7HrA26qQ6tUvecYjfBy8DYfRH3tIFdNHWK4K_jJ-7jNMx0oauyo0jqRaL5vA",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/forUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"forUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin Url access",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzA5MjI5ODAsImlhdCI6MTY3MDkwNDk4MH0.GrUpsOolvMCBwjaaNmZI2p2irKiC48INIkINHwUMCgojMiQoa1io2AEpis9ZOy7FHO6yOB62AqWd9ruveroQ6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzA3MTM3OTEsImlhdCI6MTY3MDY5NTc5MX0.Bn07EZ4r_DKWHfiv0cizf9Fy6kCVofPW-Lo94yucn7Ru8h4Zb0maLdk9D9-dMeS1qj-dwrgq4WEdqyUU6x5suA",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/forAdmin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"forAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzA3NzY3OTUsImlhdCI6MTY3MDc1ODc5NX0.ze6J58h_1Y9e6siO6MgkoxbBXfcMAWH2VWtK8NYe54zIWVsjca5WirbUqa5kgUc1sxDjKdIMbNGE7acM1RqqQQ",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/search?category=&title=Funny World&author=&price=200&publisher=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": ""
+						},
+						{
+							"key": "title",
+							"value": "Funny World"
+						},
+						{
+							"key": "author",
+							"value": ""
+						},
+						{
+							"key": "price",
+							"value": "200"
+						},
+						{
+							"key": "publisher",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLdW1hcjEyIiwiZXhwIjoxNjcxMzg5NDI0LCJpYXQiOjE2NzEzNzE0MjR9.pyi-FE1hjowGJWwrhruPh3w20E0s4QD3peqW3X1kvLkejqJj9AED_uki-UfE01m73OFZtgEMX0hFzMeSXsXPYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzA3NzY3OTUsImlhdCI6MTY3MDc1ODc5NX0.ze6J58h_1Y9e6siO6MgkoxbBXfcMAWH2VWtK8NYe54zIWVsjca5WirbUqa5kgUc1sxDjKdIMbNGE7acM1RqqQQ",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/getActiveStatus/:book-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getActiveStatus",
+						":book-id"
+					],
+					"variable": [
+						{
+							"key": "book-id",
+							"value": "Book9e3ee2e5-e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscribe Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDk2MDg4MSwiaWF0IjoxNjcwOTQyODgxfQ.HvaDZxK_7f_SZf3Pvo4vwdiGumNAv7sqXcvAuP7ZR7BGSmdUQM4s8-U8kaWEtuyqunBEM9Ky4hERFRXmpks6DA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/digitalbooks/:book-id/subscribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"digitalbooks",
+						":book-id",
+						"subscribe"
+					],
+					"variable": [
+						{
+							"key": "book-id",
+							"value": "Bookfca78d53-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Subscriptions for a user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDk2MDg4MSwiaWF0IjoxNjcwOTQyODgxfQ.HvaDZxK_7f_SZf3Pvo4vwdiGumNAv7sqXcvAuP7ZR7BGSmdUQM4s8-U8kaWEtuyqunBEM9Ky4hERFRXmpks6DA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/digitalbooks/readers/:user-name/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"digitalbooks",
+						"readers",
+						":user-name",
+						"books"
+					],
+					"variable": [
+						{
+							"key": "user-name",
+							"value": "Rishav11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Book Subscription for a user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDkyMjQ4NCwiaWF0IjoxNjcwOTA0NDg0fQ.AZ2QyJxR9A5yq5oD34C5eQ4y8Q61SEaBzWT7LkWQJWzZjk77Ys-su0spEAXFuke6uPD42wVB0uRUXjHU1DsO8w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/digitalbooks/readers/:user-name/books/:book-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"digitalbooks",
+						"readers",
+						":user-name",
+						"books",
+						":book-id"
+					],
+					"variable": [
+						{
+							"key": "user-name",
+							"value": "Rishav11"
+						},
+						{
+							"key": "book-id",
+							"value": "Book9e3ee2e5-e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Book Subscription and Content for User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDk0NjE4NCwiaWF0IjoxNjcwOTI4MTg0fQ.JEdNqKmu9uOqK2WFc3PlQ7yDAQyECF-6apIhRcexwlOEi6EyHHayv3vKgPDC59nZe5-HCXVS7cZwJ_cWDGkWCg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/digitalbooks/readers/:user-name/books/:book-id/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"digitalbooks",
+						"readers",
+						":user-name",
+						"books",
+						":book-id",
+						"read"
+					],
+					"variable": [
+						{
+							"key": "user-name",
+							"value": "Rishav11"
+						},
+						{
+							"key": "book-id",
+							"value": "Bookfca78d53-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Subscription",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSaXNoYXYxMSIsImV4cCI6MTY3MDkyMjQ4NCwiaWF0IjoxNjcwOTA0NDg0fQ.AZ2QyJxR9A5yq5oD34C5eQ4y8Q61SEaBzWT7LkWQJWzZjk77Ys-su0spEAXFuke6uPD42wVB0uRUXjHU1DsO8w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/digitalbooks/readers/:user-name/books/:book-id/cancel-subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"digitalbooks",
+						"readers",
+						":user-name",
+						"books",
+						":book-id",
+						"cancel-subscription"
+					],
+					"variable": [
+						{
+							"key": "user-name",
+							"value": "Rishav11"
+						},
+						{
+							"key": "book-id",
+							"value": "Bookfca78d53-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzEzODk4ODQsImlhdCI6MTY3MTM3MTg4NH0.ic6qlQm2u_9kw0pNyvaBQ5DS7cfvP7x3CWiV6E4atGVASBA1NZKhJejdsTRXJN1B9H4jDRvdKPsg1Ef0arVhOg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/updateStatus/:author-id/:book-id?active=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"updateStatus",
+						":author-id",
+						":book-id"
+					],
+					"query": [
+						{
+							"key": "active",
+							"value": "false"
+						}
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						},
+						{
+							"key": "book-id",
+							"value": "Book9e3ee2e5-e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzEwOTQyODUsImlhdCI6MTY3MTA3NjI4NX0.K6s69n44GelAYK7bBmAFUhkzf5-oyespBUjEnAsMVpF0MwjCdmUhP5lfmAHhYoJRKKL3dbftMGHD-EIYZVatxQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"logo\" : \"def\" , \r\n    \"content\": \"zxcvqwer\",\r\n    \"title\":\"Lost City under Water\",\r\n    \"category\":\"Fiction\",\r\n    \"price\": 3500,\r\n    \"author\":\"Prakash\",\r\n    \"publisher\":\"RB Publisher\",\r\n    \"publishedDate\":\"2022-12-15T00:00:00\",\r\n    \"active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/save/:author-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"save",
+						":author-id"
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Existing Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQcmFrYXNoMTIiLCJleHAiOjE2NzExMDQzNDcsImlhdCI6MTY3MTA4NjM0N30.19cnN76NdBDpiz_AVbaT71fZ-Br2z18_Fhzh_7Nd3cRM_ymDkMV1DU357Pu8enaB0SvTtD7xenifFnuSW_g8aQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"logo\" : \"def\" , \r\n    \"content\": \"zxcvqwer\",\r\n    \"title\":\"Lost City under Water\",\r\n    \"category\":\"Fiction\",\r\n    \"price\": 3500,\r\n    \"author\":\"Prakash\",\r\n    \"publisher\":\"RB Publisher\",\r\n    \"publishedDate\":\"2022-12-14T00:00:00\",\r\n    \"active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/update/:author-id/:book-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"update",
+						":author-id",
+						":book-id"
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						},
+						{
+							"key": "book-id",
+							"value": "Book69b990a3-2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

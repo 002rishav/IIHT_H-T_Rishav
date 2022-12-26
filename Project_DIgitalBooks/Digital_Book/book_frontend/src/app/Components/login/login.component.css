@@ -1,0 +1,64 @@
+.form-box{
+    width: 380px;
+    height: 410px;
+    position: relative;
+    margin:6% auto;
+    background: linear-gradient(to right, #A2F977, white);
+    padding: 5px;
+}
+.hero{
+    height:100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url(https://media.nbclosangeles.com/2019/09/miami-dade-public-library.jpg?quality=85&strip=all);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin-bottom: -20px;
+}
+.container {
+    position: relative;
+    padding-bottom: 58px;
+    padding-top: 20px;
+    min-height: auto;
+    width: auto;
+}
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+.toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position:relative;
+}
+#btn{
+    top:0;
+    left:0;
+    position: absolute;
+    width:110px;
+    height:100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    transition: .5s;
+}
+.user{
+    text-align: center;
+}
+.btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}

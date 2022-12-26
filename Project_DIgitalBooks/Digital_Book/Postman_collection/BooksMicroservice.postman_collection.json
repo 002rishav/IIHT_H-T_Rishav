@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "80dc930e-d480-46b9-83e5-fc0ffcfa5da0",
+		"name": "BooksMicroservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save book to Database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"logo\" : \"def\" , \r\n    \"content\": \"zxcvqwer\",\r\n    \"title\":\"Lost City under Water\",\r\n    \"category\":\"Fiction\",\r\n    \"price\": 3500,\r\n    \"author\":\"Prakash\",\r\n    \"publisher\":\"RB Publisher\",\r\n    \"publishedDate\":\"2022-12-15T00:00:00\",\r\n    \"active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/booksMicroService/api/v1/digitalbooks/author/:author-id/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"booksMicroService",
+						"api",
+						"v1",
+						"digitalbooks",
+						"author",
+						":author-id",
+						"books"
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Active Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/booksMicroService/api/v1/digitalbooks/author/:author-id/books/:book-id?block=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"booksMicroService",
+						"api",
+						"v1",
+						"digitalbooks",
+						"author",
+						":author-id",
+						"books",
+						":book-id"
+					],
+					"query": [
+						{
+							"key": "block",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						},
+						{
+							"key": "book-id",
+							"value": "Book9e3ee2e5-e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book Active Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/booksMicroService/api/v1/digitalbooks/getActiveStatus/:book-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"booksMicroService",
+						"api",
+						"v1",
+						"digitalbooks",
+						"getActiveStatus",
+						":book-id"
+					],
+					"variable": [
+						{
+							"key": "book-id",
+							"value": "Bookc63488a3-b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"logo\" : \"def\" , \r\n    \"content\": \"zxcvqwer\",\r\n    \"title\":\"Lost City under Water\",\r\n    \"category\":\"Fiction\",\r\n    \"price\": 3500,\r\n    \"author\":\"Prakash\",\r\n    \"publisher\":\"RB Publisher\",\r\n    \"publishedDate\":\"2022-12-14T00:00:00\",\r\n    \"active\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8087/booksMicroService/api/v1/digitalbooks/author/:author-id/books/:book-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"booksMicroService",
+						"api",
+						"v1",
+						"digitalbooks",
+						"author",
+						":author-id",
+						"books",
+						":book-id"
+					],
+					"variable": [
+						{
+							"key": "author-id",
+							"value": "Prakash12"
+						},
+						{
+							"key": "book-id",
+							"value": "Book69b990a3-2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/booksMicroService/api/v1/digitalbooks/search?category=&title=&author=&price=200&publisher=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"booksMicroService",
+						"api",
+						"v1",
+						"digitalbooks",
+						"search"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": ""
+						},
+						{
+							"key": "title",
+							"value": ""
+						},
+						{
+							"key": "author",
+							"value": ""
+						},
+						{
+							"key": "price",
+							"value": "200"
+						},
+						{
+							"key": "publisher",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

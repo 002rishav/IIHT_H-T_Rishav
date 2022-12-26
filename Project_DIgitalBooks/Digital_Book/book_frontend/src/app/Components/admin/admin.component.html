@@ -1,0 +1,130 @@
+<div class="hero">
+    <div class="container">
+        <div class="form-box rounded-3" style="padding: 20px;">
+            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="addBooktodb(registerForm)">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="logo">Logo :</label>
+                        <input type="text" id="logo" class="form-control" formControlName="logo"
+                            placeholder="Enter Logo url">
+                        <div class="form-text text-danger"
+                            *ngIf="Logo.errors?.['required'] && (Logo.dirty || Logo.touched)">
+                            Logo is Required.
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="title">Book Name :</label>
+                        <input type="text" id="title" class="form-control" formControlName="title"
+                            placeholder="Book Name">
+                        <div class="form-text text-danger"
+                            *ngIf="BookName.errors?.['required'] && (BookName.dirty || BookName.touched)">
+                            Book Name is Required.
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="BookName.errors?.['pattern'] && (BookName.dirty || BookName.touched)">
+                            Numbers not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="author">Book Author :</label>
+                        <input type="text" id="author" class="form-control" formControlName="author"
+                            placeholder="Book Author">
+                        <div class="form-text text-danger"
+                            *ngIf="BookAuthor.errors?.['required'] && (BookAuthor.dirty || BookAuthor.touched)">
+                            Book Author is Required.
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="BookAuthor.errors?.['pattern'] && (BookAuthor.dirty || BookAuthor.touched)">
+                            Numbers not allowed.
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="category">Book Genre :</label>
+                        <select formControlName="category" class="form-control">
+                            <option disabled [selected]="true">Select Genre</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Funny">Funny</option>
+                        </select>
+                        <div class="form-text text-danger"
+                            *ngIf="BookGenre.errors?.['required'] && (BookGenre.dirty || BookGenre.touched)">
+                            Book Genre is Required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="price">Book Price :</label>
+                        <input type="number" id="price" class="form-control" formControlName="price"
+                            placeholder="Book Price">
+                        <div class="form-text text-danger"
+                            *ngIf="BookPrice.errors?.['required'] && (BookPrice.dirty || BookPrice.touched)">
+                            Book Price is Required.
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="BookPrice.errors?.['pattern'] && (BookPrice.dirty || BookPrice.touched)">
+                            Characters not allowed.
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="content">Content :</label>
+                        <input type="text" id="content" class="form-control" formControlName="content"
+                            placeholder="Enter Content url">
+                        <div class="form-text text-danger"
+                            *ngIf="Content.errors?.['required'] && (Content.dirty || Content.touched)">
+                            Content is Required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="publisher">Publisher :</label>
+                        <input type="text" id="publisher" class="form-control" formControlName="publisher"
+                            placeholder="Book Publisher">
+                        <div class="form-text text-danger"
+                            *ngIf="Publisher.errors?.['required'] && (Publisher.dirty || Publisher.touched)">
+                            Publisher is Required.
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="publishedDate">Published Date :</label>
+                        <input type="datetime-local" id="publishedDate" class="form-control"
+                            formControlName="publishedDate">
+                        <div class="form-text text-danger"
+                            *ngIf="Publisher.errors?.['required'] && (Publisher.dirty || Publisher.touched)">
+                            Published Date is Required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="active">Active Status :</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" value="true" id="true"
+                                formControlName="active">
+                            <label class="form-check-label" for="true">True</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" value="false" id="false"
+                                formControlName="active">
+                            <label class="form-check-label" for="false">False</label>
+                        </div>
+                        <div class="form-text text-danger" *ngIf="Active.errors?.['required']">
+                            Select Status.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="submit" [disabled]="registerForm.invalid" value="Add Book"
+                            class="btn btn-primary w-100 mt-2">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
