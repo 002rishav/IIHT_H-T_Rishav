@@ -40,6 +40,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
             response = Response.builder().status(403).message("Cannot Subscribe as the book is blocked.").build();
             return ResponseEntity.ok(response);
         }
+        try {
         SubscriptionDetail subscriptionDetail=SubscriptionDetail.builder()
                 .bookId(bookId)
                 .userName(userName)
@@ -52,6 +53,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .message("Book Subscribed")
                 .build();
         return ResponseEntity.ok(response);
+        }catch(Exception e) {
+        	throw new GlobalException(ErrorCodes.BOOK_EXP_001);
+        }
     }
 
     @Override
