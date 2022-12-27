@@ -1,0 +1,51 @@
+cogjava4585@ctsjava2065 MINGW64 /d/IIHT_Batch_7.0_28-11-22/Java Basics (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Java8-basics/bin/com/basic/function/BasicFunction.class
+        modified:   Java8-basics/src/com/basic/function/BasicFunction.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        ../Readme.md.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+cogjava4585@ctsjava2065 MINGW64 /d/IIHT_Batch_7.0_28-11-22/Java Basics (main)
+$ git add *
+
+cogjava4585@ctsjava2065 MINGW64 /d/IIHT_Batch_7.0_28-11-22/Java Basics (main)
+$ git commit -m "added the function package file"
+[main e9b65c5] added the function package file
+ Committer: unknown <cogjava4585@iiht.tech>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 27 insertions(+)
+ rewrite Java Basics/Java8-basics/bin/com/basic/function/BasicFunction.class (75%)
+
+cogjava4585@ctsjava2065 MINGW64 /d/IIHT_Batch_7.0_28-11-22/Java Basics (main)
+$  git push -u origin main
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (14/14), 1.97 KiB | 673.00 KiB/s, done.
+Total 14 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/002rishav/IIHT_H_and_training_Rishav.git
+   ff673e7..e9b65c5  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
