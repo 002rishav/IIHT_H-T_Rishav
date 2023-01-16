@@ -1,10 +1,11 @@
 package com.example.book;
 
-import com.example.book.entity.Books;
-import com.example.book.nonentity.BookSaveRequest;
-import com.example.book.nonentity.Response;
-import com.example.book.repository.BookRepository;
-import com.example.book.service.impl.BookServiceImpl;
+import com.example.product.entity.Product;
+import com.example.product.nonentity.ProductSaveRequest;
+import com.example.product.nonentity.Response;
+import com.example.product.repository.ProductRepository;
+import com.example.product.service.impl.ProductServiceImpl;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,12 +27,12 @@ import static org.mockito.ArgumentMatchers.any;
 public class BookServiceImplTest {
 
     @InjectMocks
-    private BookServiceImpl bookService;
+    private ProductServiceImpl bookService;
     @Mock
-    BookRepository bookRepository;
+    ProductRepository bookRepository;
 
     @Mock
-    BookSaveRequest bookSaveRequest;
+    ProductSaveRequest bookSaveRequest;
 
     @Test
     public void searchBookWhenBookIsPresentTest(){
@@ -41,12 +42,12 @@ public class BookServiceImplTest {
         int price = 600;
         String publisher = "XYZ";
 
-        Books book = Books.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
-        List<Books> booksList = new ArrayList<>();
+        Product book = Product.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
+        List<Product> booksList = new ArrayList<>();
         booksList.add(book);
         Mockito.when(bookRepository.findByCategoryOrTitleOrAuthorOrPriceOrPublisher(category,title,author,price,publisher)).thenReturn(Optional.of(booksList));
         ResponseEntity responseEntity = bookService.searchBook(category,title,author,price,publisher);
-        Optional<List<Books>> optionalBooksList = (Optional<List<Books>>) responseEntity.getBody();
+        Optional<List<Product>> optionalBooksList = (Optional<List<Product>>) responseEntity.getBody();
         assertEquals(booksList,optionalBooksList.get());
     }
 
@@ -58,8 +59,8 @@ public class BookServiceImplTest {
         int price = 600;
         String publisher = "XYZ";
 
-        Books book = Books.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
-        List<Books> booksList = new ArrayList<>();
+        Product book = Product.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
+        List<Product> booksList = new ArrayList<>();
         booksList.add(book);
         Mockito.when(bookRepository.findByCategoryOrTitleOrAuthorOrPriceOrPublisher(category,title,author,price,publisher)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = bookService.searchBook(category,title,author,price,publisher);
@@ -72,7 +73,7 @@ public class BookServiceImplTest {
     @Test
     public void activeStatusWhenBookIsPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.of(book));
         ResponseEntity responseEntity = bookService.activeStatus(bookId);
         boolean status = (boolean) responseEntity.getBody();
@@ -82,7 +83,7 @@ public class BookServiceImplTest {
     @Test
     public void activeStatusWhenBookIsNotPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = bookService.activeStatus(bookId);
         Response response = Response.builder()
@@ -94,17 +95,17 @@ public class BookServiceImplTest {
     @Test
     public void getBookContentWhenBookIsPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.of(book));
         ResponseEntity responseEntity = bookService.getBookContent(bookId);
-        Books books = (Books) responseEntity.getBody();
+        Product books = (Product) responseEntity.getBody();
         assertEquals(book, books);
     }
 
     @Test
     public void getBookContentWhenBookIsNotPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = bookService.getBookContent(bookId);
         Response response = Response.builder()
@@ -116,7 +117,7 @@ public class BookServiceImplTest {
     @Test
     public void getBookByBookIdWhenBookIsPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.of(book));
         ResponseEntity responseEntity = bookService.getBookByBookId(bookId);
         String books = responseEntity.getBody().toString();
@@ -126,7 +127,7 @@ public class BookServiceImplTest {
     @Test
     public void getBookByBookIdWhenBookIsNotPresentTest(){
         String bookId = "Book123";
-        Books book = Books.builder().id(1).bookId("Book123").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").active(true).build();
         Mockito.when(bookRepository.findByBookId(bookId)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = bookService.getBookByBookId(bookId);
         Response response = Response.builder()
@@ -140,7 +141,7 @@ public class BookServiceImplTest {
         String bookId = "Book123";
         String authorId = "Rishav11";
         boolean blockStatus = true;
-        Books book = Books.builder().id(1).bookId("Book123").authorId("Rishav11").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").authorId("Rishav11").active(true).build();
         Mockito.when(bookRepository.findByBookIdAndAuthorId(bookId , authorId)).thenReturn(Optional.of(book));
         ResponseEntity responseEntity = bookService.updateStatus(blockStatus,authorId,bookId);
         String response1 = responseEntity.getStatusCode().toString();
@@ -152,7 +153,7 @@ public class BookServiceImplTest {
         String bookId = "Book123";
         String authorId = "Rishav11";
         boolean blockStatus = true;
-        Books book = Books.builder().id(1).bookId("Book123").authorId("Rishav11").active(true).build();
+        Product book = Product.builder().id(1).bookId("Book123").authorId("Rishav11").active(true).build();
         Mockito.when(bookRepository.findByBookIdAndAuthorId(bookId , authorId)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = bookService.updateStatus(blockStatus,authorId,bookId);
         String response1 = responseEntity.getStatusCode().toString();
@@ -161,7 +162,7 @@ public class BookServiceImplTest {
 
     @Test
     public void getAllBooksWhenBookIsNotPresent(){
-        List<Books> books = bookRepository.findAll();
+        List<Product> books = bookRepository.findAll();
         Mockito.when(bookRepository.findAll()).thenReturn(books);
         ResponseEntity responseEntity = bookService.getAllBooks();
         Object response = responseEntity.getBody();
@@ -174,7 +175,7 @@ public class BookServiceImplTest {
     @Test
     public void getAllBooksWhenBookIsPresent(){
         String authorId = "Rishav11";
-        BookSaveRequest bookSaveRequest = BookSaveRequest.builder()
+        ProductSaveRequest bookSaveRequest = ProductSaveRequest.builder()
                 .logo("abc")
                 .author("Rishav")
                 .price(100)
@@ -189,8 +190,8 @@ public class BookServiceImplTest {
         String author = "Rishav";
         int price = 600;
         String publisher = "XYZ";
-        Books book = Books.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
-        List<Books> booksList = new ArrayList<>();
+        Product book = Product.builder().id(1).bookId("Book123").category("Funny").title("Toy Story").author("Rishav").price(600).publisher("XYZ").build();
+        List<Product> booksList = new ArrayList<>();
         booksList.add(book);
         Object[] objects = new Object[booksList.size()];
         objects[0] = book;
@@ -201,7 +202,7 @@ public class BookServiceImplTest {
 
     @Test
     public void saveBookTest(){
-        bookSaveRequest = BookSaveRequest.builder()
+        bookSaveRequest = ProductSaveRequest.builder()
                 .logo("abc")
                 .author("Rishav")
                 .price(100)
@@ -212,7 +213,7 @@ public class BookServiceImplTest {
                 .category("Funny")
                 .title("Test").build();
         String authorId = "abc";
-        Books mockBook = Mockito.mock(Books.class);
+        Product mockBook = Mockito.mock(Product.class);
         Mockito.lenient().when(bookRepository.save(any())).thenReturn(mockBook);
         Response response = Response.builder()
                 .status(HttpStatus.OK.value())
