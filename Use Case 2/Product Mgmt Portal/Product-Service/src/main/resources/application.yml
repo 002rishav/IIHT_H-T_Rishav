@@ -4,6 +4,9 @@ server:
     context-path: /productsMicroService
 
 spring:
+  mvc:
+    pathmatch:
+        matching-strategy: ant-path-matcher
   data:
     mongodb:
       host: localhost
