@@ -106,4 +106,20 @@ public class ProductServiceImpl implements ProductService {
             throw new GlobalException(ErrorCodes.BOOK_EXP_001);
         }
     }
+
+	@Override
+	public ResponseEntity getProductByName(String name) {
+		Optional<Product> optionalProduct = productRepository.findByName(name);
+        Response response ;
+        if(!optionalProduct.isPresent())
+        {
+            log.info("Empty product entity found");
+            response = Response.builder()
+                    .status(200)
+                    .message("Data not found").build();
+            return ResponseEntity.ok(response);
+        }
+        Product product = optionalProduct.get();
+        return ResponseEntity.ok(product.getName());
+	}
 }

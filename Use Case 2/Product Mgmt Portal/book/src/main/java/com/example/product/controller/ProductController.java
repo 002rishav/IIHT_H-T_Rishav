@@ -19,6 +19,11 @@ public class ProductController {
     public ResponseEntity<Object> getAllProducts(){
         return productService.getAllProducts();
     }
+    
+    @GetMapping("/api/v1/getProduct/{name}")
+    public ResponseEntity getProductByName(@PathVariable("name") String name){
+        return productService.getProductByName(name);
+    }
 
     @PostMapping("/api/v1/save/products")
     public ResponseEntity postEndpointToSaveData(@RequestBody ProductSaveRequest productSaveRequest){

@@ -11,4 +11,6 @@ public interface ProductService {
     public ResponseEntity updateProductEntity(ProductSaveRequest bookSaveRequest , String name);
 
     public ResponseEntity<Object> getAllProducts();
+    
+    public ResponseEntity getProductByName(String name);
 }
