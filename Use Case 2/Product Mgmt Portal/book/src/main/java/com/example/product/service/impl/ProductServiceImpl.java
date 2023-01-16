@@ -25,81 +25,53 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository bookRepository ;
+    private final ProductRepository productRepository ;
 
-    private static final String BOOK_SAVED_SUCCESSFULLY = "Saved data successfully";
-
-    private static final String BOOK_ID_PREFIX = "Book";
+    private static final String PRODUCT_SAVED_SUCCESSFULLY = "Saved data successfully";
 
     @Override
-    public ResponseEntity saveBook(ProductSaveRequest bookSaveRequest, String authorId) {
+    public ResponseEntity saveProduct(ProductSaveRequest productSaveRequest) {
         try{
-            Product books = Product.builder()
-                    .logo(bookSaveRequest.getLogo())
-                    .publisher(bookSaveRequest.getPublisher())
-                    .publishedDate(bookSaveRequest.getPublishedDate())
-                    .price(bookSaveRequest.getPrice())
-                    .title(bookSaveRequest.getTitle())
-                    .author(bookSaveRequest.getAuthor())
-                    .active(bookSaveRequest.isActive())
-                    .content(bookSaveRequest.getContent())
-                    .category(bookSaveRequest.getCategory())
-                    .authorId(authorId)
-                    .bookId(BOOK_ID_PREFIX+ UUID.randomUUID().toString().substring(0 , 10))
-                    .build();
+            Product product = Product.builder()
+            		.name(productSaveRequest.getName())
+            		.description(productSaveRequest.getDescription())
+            		.price(productSaveRequest.getPrice())
+            		.build();
 
-            log.info("Saving data for authorId :{}" , authorId);
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             executorService.execute(() -> {
-                bookRepository.save(books);
+            	productRepository.save(product);
             });
             Response response = Response.builder()
                     .status(HttpStatus.OK.value())
-                    .message(BOOK_SAVED_SUCCESSFULLY)
+                    .message(PRODUCT_SAVED_SUCCESSFULLY)
                     .build();
             return ResponseEntity.ok(response);
+            
         }
-        catch (RuntimeException ex)
-        {
+        catch (RuntimeException ex){
             log.info("Error saving data into database");
             throw new GlobalException(ErrorCodes.BOOK_EXP_001);
         }
     }
-    @Override
-    public ResponseEntity updateStatus(boolean blockStatus, String authorId, String bookId) {
 
-       Optional<Product> optionalBooks = bookRepository.findByBookIdAndAuthorId(bookId , authorId);
-
-       Response response ;
-       if(!optionalBooks.isPresent())
-       {
-           log.info("Empty books entity found");
-           response = Response.builder()
-                   .status(200)
-                   .message("Data not found").build();
-           return ResponseEntity.ok(response);
-       }
-           Product books = optionalBooks.get();
-           books.setActive(blockStatus);
-           return ResponseEntity.ok(bookRepository.save(books));
-    }
     @Override
-    public ResponseEntity updateBookEntity(ProductSaveRequest bookSaveRequest, String authorId, String bookId) {
-        Optional<Product> optionalBooks = bookRepository.findByBookIdAndAuthorId(bookId , authorId);
+    public ResponseEntity updateProductEntity(ProductSaveRequest productSaveRequest, String name) {
+        Optional<Product> optionalProduct = productRepository.findByName(name);
 
         Response response ;
-        if(!optionalBooks.isPresent())
+        if(!optionalProduct.isPresent())
         {
-            log.info("Empty books entity found");
+            log.info("Empty product entity found");
             response = Response.builder()
                     .status(200)
                     .message("Data not found").build();
             return ResponseEntity.ok(response);
         }
         try {
-            Product books = optionalBooks.get();
-            updateBooksEntity(bookSaveRequest, books);
-            return ResponseEntity.ok(bookRepository.save(books));
+            Product product = optionalProduct.get();
+            updateBooksEntity(productSaveRequest, product);
+            return ResponseEntity.ok(productRepository.save(product));
         }
         catch (Exception exception)
         {
@@ -107,100 +79,26 @@ public class ProductServiceImpl implements ProductService {
             throw new GlobalException(ErrorCodes.BOOK_EXP_001);
         }
     }
-    private static void updateBooksEntity(ProductSaveRequest bookSaveRequest, Product books) {
-        books.setLogo(bookSaveRequest.getLogo());
-        books.setTitle(bookSaveRequest.getTitle());
-        books.setCategory(bookSaveRequest.getCategory());
-        books.setPrice(bookSaveRequest.getPrice());
-        books.setAuthor(bookSaveRequest.getAuthor());
-        books.setPublisher(bookSaveRequest.getPublisher());
-        books.setPublishedDate(bookSaveRequest.getPublishedDate());
-        books.setContent(bookSaveRequest.getContent());
-        books.setActive(bookSaveRequest.isActive());
+    private static void updateBooksEntity(ProductSaveRequest productSaveRequest, Product product) {
+    	product.setName(productSaveRequest.getName());
+    	product.setDescription(productSaveRequest.getDescription());
+    	product.setPrice(productSaveRequest.getPrice());
     }
+    
     @Override
-    public ResponseEntity searchBook(String category, String title, String author, int price, String publisher) {
-        Optional<List<Product>> optionalBooks = bookRepository.findByCategoryOrTitleOrAuthorOrPriceOrPublisher(category,title,author,price,publisher);
-
+    public ResponseEntity<Object> getAllProducts(){
+        Object[] optionalProducts = productRepository.findAll().toArray();
         Response response ;
-        if(!optionalBooks.isPresent())
+        if(optionalProducts.length == 0)
         {
-            log.info("Empty books entity found");
+            log.info("No products found");
             response = Response.builder()
                     .status(200)
-                    .message("Data not found").build();
+                    .message("No Products found").build();
             return ResponseEntity.ok(response);
         }
         try {
-            return ResponseEntity.ok(optionalBooks);
-        }
-        catch (Exception exception)
-        {
-            log.info("Error finding data into database",exception.getMessage());
-            throw new GlobalException(ErrorCodes.BOOK_EXP_001);
-        }
-    }
-    @Override
-    public ResponseEntity activeStatus(String bookId) {
-        Optional<Product> optionalBooks = bookRepository.findByBookId(bookId);
-
-        Response response ;
-        if(!optionalBooks.isPresent())
-        {
-            log.info("Empty books entity found");
-            response = Response.builder()
-                    .status(200)
-                    .message("Data not found").build();
-            return ResponseEntity.ok(response);
-        }
-        Product books = optionalBooks.get();
-        return ResponseEntity.ok(books.isActive());
-    }
-    @Override
-    public ResponseEntity getBookContent(String bookId) {
-        Optional<Product> optionalBooks = bookRepository.findByBookId(bookId);
-
-        Response response ;
-        if(!optionalBooks.isPresent())
-        {
-            log.info("Empty books entity found");
-            response = Response.builder()
-                    .status(200)
-                    .message("Data not found").build();
-            return ResponseEntity.ok(response);
-        }
-        Product books = optionalBooks.get();
-        return ResponseEntity.ok(books);
-    }
-    @Override
-    public ResponseEntity getBookByBookId(String bookId){
-        Optional<Product> optionalBooks = bookRepository.findByBookId(bookId);
-        Response response ;
-        if(!optionalBooks.isPresent())
-        {
-            log.info("Empty books entity found");
-            response = Response.builder()
-                    .status(200)
-                    .message("Data not found").build();
-            return ResponseEntity.ok(response);
-        }
-        Product books = optionalBooks.get();
-        return ResponseEntity.ok(books.getBookId());
-    }
-    @Override
-    public ResponseEntity<Object> getAllBooks(){
-        Object[] optionalBooks = bookRepository.findAll().toArray();
-        Response response ;
-        if(optionalBooks.length == 0)
-        {
-            log.info("No books found");
-            response = Response.builder()
-                    .status(200)
-                    .message("No Books found").build();
-            return ResponseEntity.ok(response);
-        }
-        try {
-            return ResponseEntity.ok(optionalBooks);
+            return ResponseEntity.ok(optionalProducts);
         }
         catch (Exception exception)
         {

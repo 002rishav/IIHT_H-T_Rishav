@@ -9,21 +9,9 @@ import java.time.LocalDateTime;
 @Builder
 public class ProductSaveRequest {
 
-    private String logo ;
-
-    private String title ;
-
-    private String category ;
-
-    private int price ;
-
-    private String author ;
-
-    private String publisher ;
-
-    private LocalDateTime publishedDate ;
-
-    private String content ;
-
-    private boolean active ;
+	private String name;
+	
+	private String description;
+	
+	private int price;
 }

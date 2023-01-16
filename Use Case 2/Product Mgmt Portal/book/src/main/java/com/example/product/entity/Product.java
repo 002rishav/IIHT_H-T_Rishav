@@ -2,52 +2,19 @@ package com.example.product.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "books" , uniqueConstraints = @UniqueConstraint(columnNames = "book_id"))
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "product")
 public class Product {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id ;
-
-    @Column(name = "book_id" , nullable = false)
-    private String bookId ;
-
-    @Column(name = "author_id")
-    private String authorId ;
-
-    @Column(name = "author")
-    private String author ;
-
-    @Column(name = "logo")
-    private String logo ;
-
-    @Column(name = "title")
-    private String title ;
-
-    @Column(name = "category")
-    private String category ;
-
-    @Column(name = "price")
-    private int price ;
-
-    @Column(name = "publisher")
-    private String publisher ;
-
-    @Column(name = "published_date")
-    private LocalDateTime publishedDate ;
-
-    @Column(name = "content")
-    private String content ;
-
-    @Column(name = "active")
-    private boolean active ;
+	
+	@Id
+	private String name;
+	private String description;
+	private int price;
+	
 }

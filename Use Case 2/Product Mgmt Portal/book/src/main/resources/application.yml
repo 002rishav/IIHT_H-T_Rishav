@@ -1,19 +1,22 @@
 server:
   port: 8087
-  servlet:
-    context-path: /booksMicroService
+#  servlet:
+#    context-path: /booksMicroService
 
 spring:
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: Products
 #    url:  jdbc:mysql://rds-demo.c2ozhw4mlwdz.us-east-1.rds.amazonaws.com:3306/library
 #    username: admin
 #    password: admin1234
-    url: jdbc:mysql://localhost:3306/library?autoreconnect = true
-    username: root
-    password: pass@word1
-  application:
-    name: BOOK-SERVICE
-  jpa:
-    hibernate:
-      ddl-auto: update
+#    url: jdbc:mysql://localhost:3306/library?autoreconnect = true
+#    username: root
+#    password: pass@word1
+#  application:
+#    name: PRODUCT-SERVICE
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
