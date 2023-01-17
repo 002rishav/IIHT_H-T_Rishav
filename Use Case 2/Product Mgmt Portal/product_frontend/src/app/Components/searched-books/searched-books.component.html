@@ -1,0 +1,37 @@
+<div class="hero">
+    <div class="container">
+        <div class="form-box rounded-3" style="padding: 20px;">
+            <table class="table table-bordered mt-5">
+                <thead>
+                    <tr *ngIf="bookDetails!=null">
+                        <th>Book Logo</th>
+                        <th>Book Id</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>category</th>
+                        <th>Price</th>
+                        <th>Publisher</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <tr *ngFor="let book of bookDetails">
+                        <td><img src="{{book.logo}}" alt="Book_logo" style="width:50px;height:60px;"></td>
+                        <td>{{book.bookId}}</td>
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.category}}</td>
+                        <td>{{book.price}}</td>
+                        <td>{{book.publisher}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" (click)="search()">Search More Books</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

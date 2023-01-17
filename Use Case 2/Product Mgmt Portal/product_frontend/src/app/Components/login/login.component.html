@@ -1,0 +1,44 @@
+<div class="hero">
+    <div class="container">
+        <div class="form-box rounded-3" style="padding: 20px;">
+            <div class="btn-group" role="group" aria-label="toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck1" (click)="loginf()" autocomplete="off">
+                <label class="btn btn-primary" for="btncheck1">User Login</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck2" (click)="registerfu()" autocomplete="off">
+                <label class="btn btn-primary" for="btncheck2">Register User</label>
+
+                <input type="checkbox" class="btn-check" id="btncheck3" (click)="registerfa()" autocomplete="off">
+                <label class="btn btn-primary" for="btncheck3">Register Admin</label>
+            </div>
+            <form id="login" class="form-group" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                <div class="col">
+                    <div class="row mb-3">
+                        <label class="user">User Login</label>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label class="details" for="userName">UserName</label>
+                    <input type="text" id="userName" formControlName="userName" placeholder="Enter your username"
+                        class="form-control">
+                    <div class="form-text text-danger"
+                        *ngIf="username.errors?.['required'] && (username.dirty || username.touched)">
+                        Username is Required.
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label class="details" for="password">Password</label>
+                    <input type="password" id="userPassword" formControlName="userPassword"
+                        placeholder="Enter your password" class="form-control">
+                    <div class="form-text text-danger"
+                        *ngIf="password.errors?.['required'] && (password.dirty || password.touched)">
+                        Password is Required.
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="submit" value="Login" class="btn form-control rounded-3">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

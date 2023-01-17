@@ -1,0 +1,41 @@
+<div class="menu-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" routerLink="">
+      <img
+        src="https://w7.pngwing.com/pngs/702/747/png-transparent-digital-library-university-of-missouri-kansas-city-knowledge-collaboration-others-blue-angle-rectangle.png">
+    </a>
+    <span style="font-weight:500;color:white;">Digital Books</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Admin'])">Admin Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Admin'])">All Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user" *ngIf="userService.roleMatch(['User'])">User
+            Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/getallsubscriptions" *ngIf="userService.roleMatch(['User'])">All
+            Subscriptions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/searchsubscriptions" *ngIf="userService.roleMatch(['User'])">Search
+            Subscription</a>
+        </li>
+      </ul>
+      <label class="user" *ngIf="isLoggedIn()">Hello!!,{{userName}}</label>
+      <button style="margin-right:5px;" *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login/SignUp</button>
+      <button style="margin-right:5px;" *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+</div>

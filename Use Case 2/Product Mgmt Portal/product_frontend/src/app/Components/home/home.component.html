@@ -1,0 +1,81 @@
+<div class="hero">
+    <div class="container">
+        <div class="form-box rounded-3">
+            <form class="form-group p-3 rounded-3" [formGroup]="searchForm" (ngSubmit)="search(searchForm)">
+                <div class="row">
+                    <div class="col text-center p-2 mb-3 bg-light">
+                        <span class="fs-3">Search Books</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="category">Book Genre</label>
+                        <select id="category" formControlName="category" class="form-control">
+                            <option disabled [selected]="true">Select Genre</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Funny">Funny</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" formControlName="title"
+                            placeholder="Enter Title">
+                        <div class="form-text text-danger"
+                            *ngIf="Title.errors?.['pattern'] && (Title.dirty || Title.touched)">
+                            Numbers not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" id="author" formControlName="author"
+                            placeholder="Enter Author">
+                        <div class="form-text text-danger"
+                            *ngIf="Author.errors?.['pattern'] && (Author.dirty || Author.touched)">
+                            Numbers not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price" formControlName="price"
+                            placeholder="Price is Mandatory">
+                        <div class="form-text text-danger"
+                            *ngIf="Price.errors?.['required'] && (Price.dirty || Price.touched)">
+                            Book Price is Required.
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="Price.errors?.['pattern'] && (Price.dirty || Price.touched)">
+                            Characters not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="publisher">Publisher</label>
+                        <input type="text" class="form-control" id="publisher" formControlName="publisher"
+                            placeholder="Enter Publisher">
+                        <div class="form-text text-danger"
+                            *ngIf="Publisher.errors?.['pattern'] && (Publisher.dirty || Publisher.touched)">
+                            Numbers not allowed.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <div class="d-grid">
+                            <button type="submit" [disabled]="searchForm.invalid" class="btn btn-primary">Search
+                                Book</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

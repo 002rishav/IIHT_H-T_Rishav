@@ -1,0 +1,56 @@
+<div class="hero">
+    <div class="container">
+        <div class="form-box rounded-3" style="padding: 20px;">
+            <form class="form-group p-3 rounded-3" [formGroup]="searchForm" (ngSubmit)="search(searchForm)">
+                <div class="row">
+                    <span class="fs-3">Search Specific Subscribed Book</span>
+                </div>
+                <div class="row mt-3">
+                    <div class="col mt-1">
+                        <label for="category">Book Id</label>
+                        <input type="text" class="form-control" id="bookId" formControlName="bookId"
+                            placeholder="Enter Book Id">
+                        <div class="form-text text-danger"
+                            *ngIf="BookId.errors?.['required'] && (BookId.dirty || BookId.touched)">
+                            Book Id is Required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 offset-3">
+                        <div class="d-grid">
+                            <button type="submit" [disabled]="searchForm.invalid" class="btn btn-primary"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">Search
+                                Subscription</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Subscription Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <span>BookId: {{subscriptionDetails.bookId}}</span>
+                </div>
+                <div class="row">
+                    <span>Username: {{subscriptionDetails.userName}}</span>
+                </div>
+                <div class="row">
+                    <span>CreatedAt: {{subscriptionDetails.createdAt}}</span>
+                </div>
+                <div class="row">
+                    <span>UpdatedAt: {{subscriptionDetails.updatedAt}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
