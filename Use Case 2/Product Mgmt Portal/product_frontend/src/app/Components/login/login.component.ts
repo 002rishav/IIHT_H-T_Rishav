@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit  {
   ngOnInit(): void {}
 
   loginForm = new FormGroup({
-    userName: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required]),
     userPassword: new FormControl("", [Validators.required])
   });
 
-  get username(): FormControl{
-    return this.loginForm.get("userName") as FormControl;
+  get email(): FormControl{
+    return this.loginForm.get("email") as FormControl;
   }
   get password(): FormControl{
     return this.loginForm.get("userPassword") as FormControl;
@@ -40,11 +40,9 @@ export class LoginComponent implements OnInit  {
         const tokenPayload = this.userAuthService.decodedToken();
         this.store.setuserNameForStore(tokenPayload.sub);
         const role = response.user.role[0].roleName;
-        if (role === 'Admin') {
+        console.log(role);
+        if (role === 'Merchant')
           this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/user']);
-        }
       },
       (error) => {
         console.log(error);
@@ -59,8 +57,5 @@ export class LoginComponent implements OnInit  {
   
   registerfu(){
     this.router.navigate(['/register_user']);
-  }
-  registerfa(){
-    this.router.navigate(['/register']);
   }
 }

@@ -6,11 +6,13 @@ import com.example.product.nonentity.ProductSaveRequest;
 
 public interface ProductService {
 
-    public ResponseEntity saveProduct(ProductSaveRequest bookSaveRequest);
+    public ResponseEntity saveProduct(ProductSaveRequest productSaveRequest);
 
-    public ResponseEntity updateProductEntity(ProductSaveRequest bookSaveRequest , String name);
+    public ResponseEntity updateProductEntity(ProductSaveRequest productSaveRequest , int id);
+    
+    public ResponseEntity deleteProduct(int id);
 
     public ResponseEntity<Object> getAllProducts();
     
-    public ResponseEntity getProductByName(String name);
+    public ResponseEntity getProductById(int id);
 }

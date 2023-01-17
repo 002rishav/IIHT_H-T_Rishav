@@ -10,13 +10,13 @@ import com.example.product.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -26,6 +26,9 @@ import java.util.concurrent.Executors;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository ;
+    
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
 
     private static final String PRODUCT_SAVED_SUCCESSFULLY = "Saved data successfully";
 
@@ -33,6 +36,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseEntity saveProduct(ProductSaveRequest productSaveRequest) {
         try{
             Product product = Product.builder()
+            		.id(sequenceGeneratorService.getSequenceNumber(Product.SEQUENCE_NAME))
             		.name(productSaveRequest.getName())
             		.description(productSaveRequest.getDescription())
             		.price(productSaveRequest.getPrice())
@@ -43,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
             	productRepository.save(product);
             });
             Response response = Response.builder()
-                    .status(HttpStatus.OK.value())
+                    .status(HttpStatus.CREATED.value())
                     .message(PRODUCT_SAVED_SUCCESSFULLY)
                     .build();
             return ResponseEntity.ok(response);
@@ -53,18 +57,19 @@ public class ProductServiceImpl implements ProductService {
             log.info("Error saving data into database");
             throw new GlobalException(ErrorCodes.BOOK_EXP_001);
         }
+    
     }
 
     @Override
-    public ResponseEntity updateProductEntity(ProductSaveRequest productSaveRequest, String name) {
-        Optional<Product> optionalProduct = productRepository.findByName(name);
+    public ResponseEntity updateProductEntity(ProductSaveRequest productSaveRequest, int id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
 
         Response response ;
         if(!optionalProduct.isPresent())
         {
             log.info("Empty product entity found");
             response = Response.builder()
-                    .status(200)
+                    .status(500)
                     .message("Data not found").build();
             return ResponseEntity.ok(response);
         }
@@ -93,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
         {
             log.info("No products found");
             response = Response.builder()
-                    .status(200)
+                    .status(500)
                     .message("No Products found").build();
             return ResponseEntity.ok(response);
         }
@@ -108,18 +113,37 @@ public class ProductServiceImpl implements ProductService {
     }
 
 	@Override
-	public ResponseEntity getProductByName(String name) {
-		Optional<Product> optionalProduct = productRepository.findByName(name);
+	public ResponseEntity getProductById(int id) {
+		Optional<Product> optionalProduct = productRepository.findById(id);
         Response response ;
         if(!optionalProduct.isPresent())
         {
             log.info("Empty product entity found");
             response = Response.builder()
-                    .status(200)
+                    .status(500)
                     .message("Data not found").build();
             return ResponseEntity.ok(response);
         }
         Product product = optionalProduct.get();
-        return ResponseEntity.ok(product.getName());
+        return ResponseEntity.ok(product.getId());
+	}
+
+	@Override
+	public ResponseEntity deleteProduct(int id) {
+		Optional<Product> optionalProduct = productRepository.findById(id);
+		Response response ;
+		if(!optionalProduct.isPresent())
+        {
+            log.info("Empty product entity found");
+            response = Response.builder()
+                    .status(500)
+                    .message("Data not found").build();
+            return ResponseEntity.ok(response);
+        }
+		productRepository.deleteById(id);
+		response = Response.builder()
+                .status(204)
+                .message("Product Deleted").build();
+		return ResponseEntity.ok(response);
 	}
 }

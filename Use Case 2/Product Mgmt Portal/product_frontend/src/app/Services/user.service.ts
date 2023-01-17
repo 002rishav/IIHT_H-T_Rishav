@@ -6,7 +6,7 @@ import { UserAuthService } from './user-auth.service';
   providedIn: 'root',
 })
 export class UserService {
-  PATH_OF_API = 'http://ec2-44-204-29-8.compute-1.amazonaws.com:9090';
+  PATH_OF_API = 'http://localhost:9090';
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
@@ -20,27 +20,9 @@ export class UserService {
     });
   }
 
-  public registeradmin(registerData: any) {
-    return this.httpclient.post(this.PATH_OF_API + '/registerNewAdmin', registerData, {
-      headers: this.requestHeader,
-    });
-  }
-
   public registeruser(registerData: any) {
-    return this.httpclient.post(this.PATH_OF_API + '/registerNewUser', registerData, {
+    return this.httpclient.post(this.PATH_OF_API + '/registerNewMerchant', registerData, {
       headers: this.requestHeader,
-    });
-  }
-
-  public forUser() {
-    return this.httpclient.get(this.PATH_OF_API + '/forUser', {
-      responseType: 'text',
-    });
-  }
-
-  public forAdmin() {
-    return this.httpclient.get(this.PATH_OF_API + '/forAdmin', {
-      responseType: 'text',
     });
   }
 

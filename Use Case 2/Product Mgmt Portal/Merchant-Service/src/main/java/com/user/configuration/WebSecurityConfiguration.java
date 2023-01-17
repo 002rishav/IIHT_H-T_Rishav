@@ -40,7 +40,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate", "/registerNewMerchant","/createNewRole","/swagger-ui.html","/v2/api-docs","/configuration/ui","/swagger-resources/**","/configuration/security","/webjars/**").permitAll()
+                .authorizeRequests().antMatchers("/api/v1/auth", "/api/v1/reg","/createNewRole","/swagger-ui.html","/v2/api-docs","/configuration/ui","/swagger-resources/**","/configuration/security","/webjars/**").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()

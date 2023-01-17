@@ -21,6 +21,9 @@ public class MerchantService {
 
     @Autowired
     private RoleRepo roleRepo;
+    
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -32,6 +35,7 @@ public class MerchantService {
         merchant.setRole(userRoles);
         merchant.setUserPassword(getEncodedPassword(merchant.getUserPassword()));
 
+        merchant.setId(sequenceGeneratorService.getSequenceNumber(Merchant.SEQUENCE_NAME));
         return merchantRepo.save(merchant);
     }
 

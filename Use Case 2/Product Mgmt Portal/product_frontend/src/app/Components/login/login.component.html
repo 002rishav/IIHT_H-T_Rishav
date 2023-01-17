@@ -7,9 +7,6 @@
 
                 <input type="checkbox" class="btn-check" id="btncheck2" (click)="registerfu()" autocomplete="off">
                 <label class="btn btn-primary" for="btncheck2">Register User</label>
-
-                <input type="checkbox" class="btn-check" id="btncheck3" (click)="registerfa()" autocomplete="off">
-                <label class="btn btn-primary" for="btncheck3">Register Admin</label>
             </div>
             <form id="login" class="form-group" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
                 <div class="col">
@@ -18,12 +15,12 @@
                     </div>
                 </div>
                 <div class="col mb-3">
-                    <label class="details" for="userName">UserName</label>
-                    <input type="text" id="userName" formControlName="userName" placeholder="Enter your username"
+                    <label class="details" for="email">Email</label>
+                    <input type="text" id="email" formControlName="email" placeholder="Enter your email"
                         class="form-control">
                     <div class="form-text text-danger"
-                        *ngIf="username.errors?.['required'] && (username.dirty || username.touched)">
-                        Username is Required.
+                        *ngIf="email.errors?.['required'] && (email.dirty || email.touched)">
+                        Email is Required.
                     </div>
                 </div>
                 <div class="col mb-3">

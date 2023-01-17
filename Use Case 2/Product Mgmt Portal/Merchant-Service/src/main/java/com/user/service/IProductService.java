@@ -12,5 +12,7 @@ public interface IProductService {
 
     public ResponseEntity saveProduct(SaveProductResponse saveProductResponse);
 
-    public ResponseEntity updateProduct(SaveProductResponse saveProductResponse, String name);
+    public ResponseEntity updateProduct(SaveProductResponse saveProductResponse, int id);
+    
+    public ResponseEntity deleteProduct(int id);
 }

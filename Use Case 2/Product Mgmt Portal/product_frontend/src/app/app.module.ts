@@ -16,7 +16,6 @@ import { AuthGuard } from './Auth/auth.guard';
 import { AuthInterceptor } from './Auth/auth.interceptor';
 import { UserService } from './Services/user.service';
 import { SearchedBooksComponent } from './Components/searched-books/searched-books.component';
-import { RegisterComponent } from './Components/register/register.component';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
 import { GetallbooksComponent } from './Components/getallbooks/getallbooks.component';
 import { GetallsubscriptionsforuserComponent } from './Components/getallsubscriptionsforuser/getallsubscriptionsforuser.component';
@@ -34,7 +33,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     ForbiddenComponent,
     SearchedBooksComponent,
-    RegisterComponent,
     RegisterUserComponent,
     GetallbooksComponent,
     GetallsubscriptionsforuserComponent,

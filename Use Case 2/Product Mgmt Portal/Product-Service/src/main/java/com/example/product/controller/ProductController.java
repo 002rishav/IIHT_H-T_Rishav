@@ -15,23 +15,28 @@ public class ProductController {
 
     private final ProductService productService ;
 
-    @GetMapping("/api/v1/getAllProducts")
+    @GetMapping("/api/v1/AllProducts")
     public ResponseEntity<Object> getAllProducts(){
         return productService.getAllProducts();
     }
     
-    @GetMapping("/api/v1/getProduct/{name}")
-    public ResponseEntity getProductByName(@PathVariable("name") String name){
-        return productService.getProductByName(name);
+    @GetMapping("/api/v1/{id}")
+    public ResponseEntity getProductId(@PathVariable("id") int id){
+        return productService.getProductById(id);
     }
 
-    @PostMapping("/api/v1/save/products")
+    @PostMapping("/api/v1")
     public ResponseEntity postEndpointToSaveData(@RequestBody ProductSaveRequest productSaveRequest){
         return productService.saveProduct(productSaveRequest);
     }
 
-    @PutMapping("/api/v1/update/products/{name}")
-    public ResponseEntity putEndpointToSaveData(@RequestBody ProductSaveRequest productSaveRequest , @PathVariable("name") String name){
-        return productService.updateProductEntity(productSaveRequest, name);
+    @PutMapping("/api/v1/{id}")
+    public ResponseEntity putEndpointToSaveData(@RequestBody ProductSaveRequest productSaveRequest , @PathVariable("id") int id){
+        return productService.updateProductEntity(productSaveRequest, id);
+    }
+    
+    @DeleteMapping("/api/v1/{id}")
+    public ResponseEntity deleteEndpointToDeleteProduct(@PathVariable("id") int id){
+        return productService.deleteProduct(id);
     }
 }

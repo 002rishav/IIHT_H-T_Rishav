@@ -19,14 +19,14 @@ export class RegisterUserComponent {
   ngOnInit(): void {}
 
   registerForm = new FormGroup({
-    userName: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required]),
     userFirstName: new FormControl("", [Validators.required]),
     userLastName: new FormControl("", [Validators.required]),
     userPassword: new FormControl("", [Validators.required])
   });
 
-  get username(): FormControl{
-    return this.registerForm.get("userName") as FormControl;
+  get email(): FormControl{
+    return this.registerForm.get("email") as FormControl;
   }
   get firstname(): FormControl{
     return this.registerForm.get("userFirstName") as FormControl;
@@ -59,7 +59,5 @@ export class RegisterUserComponent {
   registerfu(){
     this.router.navigate(['/register_user']);
   }
-  registerfa(){
-    this.router.navigate(['/register']);
-  }
+
 }
