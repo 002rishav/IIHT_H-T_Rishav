@@ -15,13 +15,13 @@ export class UserService {
   ) {}
 
   public login(loginData: any) {
-    return this.httpclient.post(this.PATH_OF_API + '/authenticate', loginData, {
+    return this.httpclient.post(this.PATH_OF_API + '/api/v1/auth', loginData, {
       headers: this.requestHeader,
     });
   }
 
   public registeruser(registerData: any) {
-    return this.httpclient.post(this.PATH_OF_API + '/registerNewMerchant', registerData, {
+    return this.httpclient.post(this.PATH_OF_API + '/api/v1/reg', registerData, {
       headers: this.requestHeader,
     });
   }

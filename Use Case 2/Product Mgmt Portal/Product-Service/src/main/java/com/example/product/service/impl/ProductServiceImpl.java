@@ -122,7 +122,7 @@ public class ProductServiceImpl implements ProductService {
             response = Response.builder()
                     .status(500)
                     .message("Data not found").build();
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(0);
         }
         Product product = optionalProduct.get();
         return ResponseEntity.ok(product.getId());

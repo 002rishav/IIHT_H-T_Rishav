@@ -43,7 +43,7 @@ export class RegisterUserComponent {
       (response:any) => {
         console.log(response);
         registerForm.reset();
-        alert("Normal user created.Login with your credentials");
+        alert("Merchant user created.Login with your credentials");
         this.router.navigate(['/login']);
       },
       (err) => {

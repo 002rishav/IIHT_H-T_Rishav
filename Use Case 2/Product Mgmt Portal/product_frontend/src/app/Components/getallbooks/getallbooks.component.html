@@ -3,40 +3,28 @@
         <div class="form-box rounded-3" style="padding: 20px;">
             <table class="table table-bordered mt-5">
                 <thead>
-                    <tr *ngIf="bookDetails!=null">
-                        <th>Book Logo</th>
-                        <th>Book Id</th>
-                        <th>Book Name</th>
-                        <th>Author</th>
-                        <th>Author Id</th>
-                        <th>Content</th>
-                        <th>category</th>
-                        <th>Price</th>
-                        <th>Publisher</th>
-                        <th>Active</th>
-                        <th>Edit</th>
-                        <th>Edit Status</th>
+                    <tr *ngIf="productDetails!=null">
+                        <th>ProductId</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>                       
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody class="tbody">
-                    <tr *ngFor="let book of bookDetails">
-                        <td><img src="{{book.logo}}" alt="Book_logo" style="width:50px;height:60px;"></td>
-                        <td>{{book.bookId}}</td>
-                        <td>{{book.title}}</td>
-                        <td>{{book.author}}</td>
-                        <td>{{book.authorId}}</td>
-                        <td><a *ngIf="book!=null" href="{{book.content}}">Open Book</a></td>
-                        <td>{{book.category}}</td>
-                        <td>{{book.price}}</td>
-                        <td>{{book.publisher}}</td>
-                        <td>{{book.active}}</td>
+                    <tr *ngFor="let product of productDetails">
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.price}}</td>
                         <td>
-                            <button type="button" class="btn btn-danger" value="Edit" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" (click)="edit(book)">Edit</button>
+                            <button type="button" class="btn btn-warning" value="Update" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="edit(product)">Update</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-warning" value="Edit Status" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal2" (click)="edit(book)">Edit Status</button>
+                            <button type="button" class="btn btn-danger" value="Delete" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2" (click)="deleteProduct(product)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -49,151 +37,60 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-group" [formGroup]="registerForm" (ngSubmit)="updateBook()">
+                <form class="form-group" [formGroup]="registerForm" (ngSubmit)="updateProduct()">
                     <div class="row">
-                        <div class="form-group col-6">
-                            <label for="logo">Logo :</label>
-                            <input type="text" id="logo" [(ngModel)]="bookToUpdate.logo" class="form-control"
-                                formControlName="logo" placeholder="Logo Link">
+                        <div class="form-group">
+                            <label for="name">Product Name :</label>
+                            <input type="text" id="title" [(ngModel)]="productToUpdate.name" class="form-control"
+                                formControlName="name" placeholder="Product Name">
                             <div class="form-text text-danger"
-                                *ngIf="Logo.errors?.['required'] && (Logo.dirty || Logo.touched)">
-                                Logo is Required.
-                            </div>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="title">Book Name :</label>
-                            <input type="text" id="title" [(ngModel)]="bookToUpdate.title" class="form-control"
-                                formControlName="title" placeholder="Book Name">
-                            <div class="form-text text-danger"
-                                *ngIf="BookName.errors?.['required'] && (BookName.dirty || BookName.touched)">
-                                Book Name is Required.
+                                *ngIf="ProductName.errors?.['required'] && (ProductName.dirty || ProductName.touched)">
+                                Product Name is Required.
                             </div>
                             <div class="form-text text-danger"
-                                *ngIf="BookName.errors?.['pattern'] && (BookName.dirty || BookName.touched)">
+                                *ngIf="ProductName.errors?.['pattern'] && (ProductName.dirty || ProductName.touched)">
                                 Numbers not allowed.
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-6">
-                            <label for="author">Book Author :</label>
-                            <input type="text" id="author" [(ngModel)]="bookToUpdate.author" class="form-control"
-                                formControlName="author" placeholder="Book Author">
+                        <div class="form-group">
+                            <label for="description">Product Description :</label>
+                            <input type="text" id="description" [(ngModel)]="productToUpdate.description" class="form-control"
+                                formControlName="description" placeholder="Description">
                             <div class="form-text text-danger"
-                                *ngIf="BookAuthor.errors?.['required'] && (BookAuthor.dirty || BookAuthor.touched)">
-                                Book Author is Required.
+                                *ngIf="ProductDescription.errors?.['required'] && (ProductDescription.dirty || ProductDescription.touched)">
+                                Product Description is Required.
                             </div>
                             <div class="form-text text-danger"
-                                *ngIf="BookAuthor.errors?.['pattern'] && (BookAuthor.dirty || BookAuthor.touched)">
+                                *ngIf="ProductDescription.errors?.['pattern'] && (ProductDescription.dirty || ProductDescription.touched)">
                                 Numbers not allowed.
-                            </div>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="category">Book Genre :</label>
-                            <select id="category" formControlName="category" class="form-control"
-                                [(ngModel)]="bookToUpdate.category">
-                                <option value="Fiction">Fiction</option>
-                                <option value="Suspense">Suspense</option>
-                                <option value="Romantic">Romantic</option>
-                                <option value="Funny">Funny</option>
-                            </select>
-                            <div class="form-text text-danger"
-                                *ngIf="BookGenre.errors?.['required'] && (BookGenre.dirty || BookGenre.touched)">
-                                Book Genre is Required.
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-6">
-                            <label for="price">Book Price :</label>
-                            <input type="number" id="price" [(ngModel)]="bookToUpdate.price" class="form-control"
-                                formControlName="price" placeholder="Book Price">
+                        <div class="form-group">
+                            <label for="price">Product Price :</label>
+                            <input type="number" id="price" [(ngModel)]="productToUpdate.price" class="form-control"
+                                formControlName="price" placeholder="Product Price">
                             <div class="form-text text-danger"
-                                *ngIf="BookPrice.errors?.['required'] && (BookPrice.dirty || BookPrice.touched)">
-                                Book Price is Required.
+                                *ngIf="ProductPrice.errors?.['required'] && (ProductPrice.dirty || ProductPrice.touched)">
+                                Product Price is Required.
                             </div>
                             <div class="form-text text-danger"
-                                *ngIf="BookPrice.errors?.['pattern'] && (BookPrice.dirty || BookPrice.touched)">
+                                *ngIf="ProductPrice.errors?.['pattern'] && (ProductPrice.dirty || ProductPrice.touched)">
                                 Characters not allowed.
                             </div>
                         </div>
-                        <div class="form-group col-6">
-                            <label for="content">Content :</label>
-                            <input type="text" id="content" [(ngModel)]="bookToUpdate.content" class="form-control"
-                                formControlName="content" placeholder="Content Link">
-                            <div class="form-text text-danger"
-                                *ngIf="Content.errors?.['required'] && (Content.dirty || Content.touched)">
-                                Content is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label for="publisher">Publisher :</label>
-                            <input type="text" id="publisher" [(ngModel)]="bookToUpdate.publisher" class="form-control"
-                                formControlName="publisher" placeholder="Book Publisher">
-                            <div class="form-text text-danger"
-                                *ngIf="Publisher.errors?.['required'] && (Publisher.dirty || Publisher.touched)">
-                                Publisher is Required.
-                            </div>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="publishedDate">Published Date :</label>
-                            <input type="datetime-local" id="publishedDate" [(ngModel)]="bookToUpdate.publishedDate"
-                                class="form-control" formControlName="publishedDate">
-                            <div class="form-text text-danger"
-                                *ngIf="Publisher.errors?.['required'] && (Publisher.dirty || Publisher.touched)">
-                                Published Date is Required.
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <input type="submit" value="Update Book" data-bs-dismiss="modal"
+                            <input type="submit" value="Update Product" data-bs-dismiss="modal"
                                 class="btn btn-primary w-100 mt-2">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Book Status</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="form-group" [formGroup]="registerForm" (ngSubmit)="updateStatus()">
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="active">Active Status :</label>
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" [(ngModel)]="bookToUpdate.active" class="form-check-input" value="true" id="true"
-                                    formControlName="active"> 
-                                <label class="form-check-label" for="true">True</label>
-                            </div>   
-                            <div class="form-check form-check-inline">
-                                <input type="radio" [(ngModel)]="bookToUpdate.active" class="form-check-input" value="false" id="false"
-                                    formControlName="active">
-                                <label class="form-check-label" for="false">False</label>
-                            </div>    
-                            <div class="form-text text-danger" *ngIf="Active.errors?.['required']">
-                                Select Status.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <input type="submit" value="Update Status" data-bs-dismiss="modal" class="btn btn-primary w-100 mt-2">
                         </div>
                     </div>
                 </form>

@@ -12,85 +12,53 @@ export class GetallbooksComponent implements OnInit {
 
   constructor(private bookService: BookService) { }
   
-  bookDetails: any;
+  productDetails: any;
   
   ngOnInit() {
-    this.bookService.getallbooks().subscribe(
+    this.bookService.getallproducts().subscribe(
       (resp) => {
         console.log(resp);
-        this.bookDetails = resp;
+        this.productDetails = resp;
       },
       (err) => {
         console.log(err);
-        alert("Unable to Fetch Books");
+        alert("Unable to Fetch Products");
       }
     );
   }
 
   registerForm = new FormGroup({
-    logo: new FormControl("", [Validators.required]),
-    title: new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
-    author: new FormControl("",[Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
+    name: new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
+    description: new FormControl("",[Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
     price: new FormControl("", [Validators.required, Validators.pattern("^[0-9]+(\.[0-9]+)?$")]),
-    category: new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
-    content: new FormControl("",[Validators.required]),
-    publisher: new FormControl("",[Validators.required]),
-    publishedDate: new FormControl("",[Validators.required]),
-    active: new FormControl("",[Validators.required])
   });
 
-  get BookName(): FormControl{
-    return this.registerForm.get("title") as FormControl;
+  get ProductName(): FormControl{
+    return this.registerForm.get("name") as FormControl;
   }
-  get BookAuthor(): FormControl{
-    return this.registerForm.get("author") as FormControl;
+  get ProductDescription(): FormControl{
+    return this.registerForm.get("description") as FormControl;
   }
-  get BookPrice(): FormControl{
+  get ProductPrice(): FormControl{
     return this.registerForm.get("price") as FormControl;
   }
-  get BookGenre(): FormControl{
-    return this.registerForm.get("category") as FormControl;
-  }
-  get Active(): FormControl{
-    return this.registerForm.get("active") as FormControl;
-  }
-  get Logo(): FormControl{
-    return this.registerForm.get("logo") as FormControl;
-  }
-  get Content(): FormControl{
-    return this.registerForm.get("content") as FormControl;
-  }
-  get Publisher(): FormControl{
-    return this.registerForm.get("publisher") as FormControl;
-  }
-  get PublishedDate(): FormControl{
-    return this.registerForm.get("publishedDate") as FormControl;
-  }
 
-  bookToUpdate = {
+  productToUpdate = {
     id:"",
-    bookId:"",
-    authorId:"",
-    author:"",
-    logo:"",
-    title:"",
-    category:"",
-    price:"",
-    publisher:"",
-    publishedDate:"",
-    content:"",
-    active:""
+    name:"",
+    description:"",
+    price:""
   }
   
-  edit(book: any){
-    this.bookToUpdate = book;
+  edit(product: any){
+    this.productToUpdate = product;
   }
 
-  updateBook(){
-    this.bookService.updatebook(this.bookToUpdate,this.bookToUpdate.bookId,this.bookToUpdate.authorId).subscribe(
+  updateProduct(){
+    this.bookService.updateproduct(this.productToUpdate,this.productToUpdate.id).subscribe(
       (resp) => {
         console.log(resp);
-        alert("Book Updated Successfully"); 
+        alert("Product Updated Successfully"); 
       },
       (err) => {
         console.log(err);
@@ -99,17 +67,19 @@ export class GetallbooksComponent implements OnInit {
     );
   }
 
-  updateStatus(){
-    this.bookService.updatestatus(this.bookToUpdate,this.bookToUpdate.bookId,this.bookToUpdate.authorId).subscribe(
+  deleteProduct(product: any){
+    this.bookService.delete(product.id).subscribe(
       (resp) => {
         console.log(resp);
-        alert("Status Updated Successfully");
+        alert("Product Deleted Successfully");
+        this.ngOnInit(); 
       },
       (err) => {
         console.log(err);
-        alert("Error occurred in updating");
+        alert("Error occurred in deleting");
       }
     );
   }
+
 
 }

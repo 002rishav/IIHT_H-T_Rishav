@@ -30,15 +30,15 @@
     box-shadow: 0 0 20px 9px #ff61241f;
     border-radius: 30px;
 }
-.toggle-btn{
+/* .toggle-btn{
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;
     border: 0;
     outline: none;
     position:relative;
-}
-#btn{
+} */
+/* #btn{
     top:0;
     left:0;
     position: absolute;
@@ -47,13 +47,13 @@
     background: linear-gradient(to right, #ff105f, #ffad06);
     border-radius: 30px;
     transition: .5s;
-}
+} */
 .user{
     text-align: center;
 }
 .btn{
     width: 85%;
-    padding: 10px 30px;
+    padding: 10px 60px;
     cursor: pointer;
     display: block;
     margin: auto;

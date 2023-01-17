@@ -4,7 +4,7 @@
       <img
         src="https://w7.pngwing.com/pngs/702/747/png-transparent-digital-library-university-of-missouri-kansas-city-knowledge-collaboration-others-blue-angle-rectangle.png">
     </a>
-    <span style="font-weight:500;color:white;">Digital Books</span>
+    <span style="font-weight:500;color:white;">Product Management System</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa fa-bars"></i>
@@ -15,10 +15,10 @@
           <a class="nav-link" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Admin'])">Admin Dashboard</a>
+          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Merchant'])">Admin Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Admin'])">All Books</a>
+          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Merchant'])">All Books</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/user" *ngIf="userService.roleMatch(['User'])">User

@@ -3,10 +3,10 @@
         <div class="form-box rounded-3" style="padding: 20px;">
             <div class="btn-group" role="group" aria-label="toggle button group">
                 <input type="checkbox" class="btn-check" id="btncheck1" (click)="loginf()" autocomplete="off">
-                <label class="btn btn-primary" for="btncheck1">User Login</label>
+                <label class="btn btn-primary" for="btncheck1">Login</label>
 
                 <input type="checkbox" class="btn-check" id="btncheck2" (click)="registerfu()" autocomplete="off">
-                <label class="btn btn-primary" for="btncheck2">Register User</label>
+                <label class="btn btn-primary" for="btncheck2">Register</label>
             </div>
             <form class="form-group" [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm)">
                 <div class="row">
@@ -20,7 +20,7 @@
                         class="form-control">
                     <div class="form-text text-danger"
                         *ngIf="email.errors?.['required'] && (email.dirty || email.touched)">
-                        Username is Required.
+                        Email is Required.
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="submit" value="User" class="btn form-control rounded-3">
+                        <input type="submit" value="Register" class="btn form-control rounded-3">
                     </div>
                 </div>
             </form>

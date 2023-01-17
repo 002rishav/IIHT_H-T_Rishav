@@ -27,16 +27,16 @@ export class UserComponent implements OnInit {
         this.userName = val || userNameFromToken
       }
     );
-    this.bookService.getallbooks().subscribe(
-      (resp) => {
-        console.log(resp);
-        this.bookDetails = resp;
-      },
-      (err) => {
-        console.log(err);
-        alert("Unable to Fetch Books");
-      }
-    );
+    // this.bookService.getallbooks().subscribe(
+    //   (resp) => {
+    //     console.log(resp);
+    //     this.bookDetails = resp;
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //     alert("Unable to Fetch Books");
+    //   }
+    // );
   }
 
   subscribeBook(book: any) {

@@ -13,10 +13,10 @@ import { GetallsubscriptionsforuserComponent } from './Components/getallsubscrip
 import { SearchSubscriptionComponent } from './Components/search-subscription/search-subscription.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Merchant']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['User']} },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'searched_books', component: SearchedBooksComponent },
   { path: 'register_user', component: RegisterUserComponent },

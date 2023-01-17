@@ -3,10 +3,10 @@
         <div class="form-box rounded-3" style="padding: 20px;">
             <div class="btn-group" role="group" aria-label="toggle button group">
                 <input type="checkbox" class="btn-check" id="btncheck1" (click)="loginf()" autocomplete="off">
-                <label class="btn btn-primary" for="btncheck1">User Login</label>
+                <label class="btn btn-primary" for="btncheck1">Login</label>
 
                 <input type="checkbox" class="btn-check" id="btncheck2" (click)="registerfu()" autocomplete="off">
-                <label class="btn btn-primary" for="btncheck2">Register User</label>
+                <label class="btn btn-primary" for="btncheck2">Register</label>
             </div>
             <form id="login" class="form-group" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
                 <div class="col">

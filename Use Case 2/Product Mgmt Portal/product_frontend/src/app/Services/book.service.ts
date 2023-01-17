@@ -7,7 +7,7 @@ import { UserAuthService } from './user-auth.service';
 })
 export class BookService {
 
-  PATH_OF_API = 'http://ec2-44-204-29-8.compute-1.amazonaws.com:9090';
+  PATH_OF_API = 'http://localhost:9090';
 
   response :any;
 
@@ -28,16 +28,16 @@ export class BookService {
     return this.httpClient.post(this.PATH_OF_API + '/save/' +username, bookData);
   }
 
-  public getallbooks(){
-    return this.httpClient.get(this.PATH_OF_API + '/getAllBooks');
+  public getallproducts(){
+    return this.httpClient.get(this.PATH_OF_API + '/api/v1/AllProducts');
   }
 
-  public updatebook(bookData: any, bookId: string, authorId: string){
-    return this.httpClient.put(this.PATH_OF_API + '/update/' + authorId + '/' + bookId, bookData);
+  public updateproduct(productData: any, productId: string){
+    return this.httpClient.put(this.PATH_OF_API + '/api/v1/' + productId, productData);
   }
 
-  public updatestatus(bookData: any, bookId: string, authorId: string){
-    return this.httpClient.post(this.PATH_OF_API + '/updateStatus/' + authorId + '/' + bookId + '?active=' + bookData.active , bookData);
+  public delete(productId: string){
+    return this.httpClient.delete(this.PATH_OF_API + '/api/v1/' + productId);
   }
 
   public subscribebook(bookData:any, bookId: string){
