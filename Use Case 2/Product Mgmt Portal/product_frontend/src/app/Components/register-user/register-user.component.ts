@@ -53,7 +53,7 @@ export class RegisterUserComponent {
   }
 
   loginf(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   registerfu(){

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit  {
   }
 
   loginf(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
   
   registerfu(){

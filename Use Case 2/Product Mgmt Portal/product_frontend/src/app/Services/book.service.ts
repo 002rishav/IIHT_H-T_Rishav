@@ -24,8 +24,8 @@ export class BookService {
       title + '&author=' + author +'&price=' + price +  '&publisher=' + publisher);
   }
 
-  public addBook(bookData: any,username:String){
-    return this.httpClient.post(this.PATH_OF_API + '/save/' +username, bookData);
+  public addProduct(productData: any){
+    return this.httpClient.post(this.PATH_OF_API + '/api/v1' , productData);
   }
 
   public getallproducts(){
@@ -38,26 +38,6 @@ export class BookService {
 
   public delete(productId: string){
     return this.httpClient.delete(this.PATH_OF_API + '/api/v1/' + productId);
-  }
-
-  public subscribebook(bookData:any, bookId: string){
-    return this.httpClient.post(this.PATH_OF_API + '/api/v1/digitalbooks/' + bookId + '/subscribe',bookData);
-  }
-
-  public unsubscribebook(bookData:any, bookId: string, username: String){
-    return this.httpClient.post(this.PATH_OF_API + '/api/v1/digitalbooks/readers/' + username + '/books/' + bookId + '/cancel-subscription',bookData);
-  }
-
-  public getallsubscriptions(username: String){
-    return this.httpClient.get(this.PATH_OF_API + '/api/v1/digitalbooks/readers/' + username + '/books');
-  }
-
-  public getsubscription(bookId:String, username: String){
-    return this.httpClient.get(this.PATH_OF_API + '/api/v1/digitalbooks/readers/' + username + '/books/' + bookId);
-  }
-
-  public read(bookid: String, username: String){
-    return this.httpClient.get(this.PATH_OF_API + '/api/v1/digitalbooks/readers/'+ username + '/books/' + bookid + '/read');
   }
 
 }

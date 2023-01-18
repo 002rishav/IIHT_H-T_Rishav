@@ -15,26 +15,14 @@
           <a class="nav-link" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Merchant'])">Admin Dashboard</a>
+          <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Merchant'])">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Merchant'])">All Books</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user" *ngIf="userService.roleMatch(['User'])">User
-            Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/getallsubscriptions" *ngIf="userService.roleMatch(['User'])">All
-            Subscriptions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/searchsubscriptions" *ngIf="userService.roleMatch(['User'])">Search
-            Subscription</a>
-        </li>
+          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Merchant'])">All Products</a>
+        </li>      
       </ul>
       <label class="user" *ngIf="isLoggedIn()">Hello!!,{{userName}}</label>
-      <button style="margin-right:5px;" *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login/SignUp</button>
+      <!-- <button style="margin-right:5px;" *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login/SignUp</button> -->
       <button style="margin-right:5px;" *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
   </nav>
