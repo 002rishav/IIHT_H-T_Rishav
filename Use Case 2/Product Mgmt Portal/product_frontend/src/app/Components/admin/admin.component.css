@@ -2,7 +2,7 @@
     height:100%;
     width: 100%;
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-    url(https://media.nbclosangeles.com/2019/09/miami-dade-public-library.jpg?quality=85&strip=all);
+    url(https://www.abetterlemonadestand.com/wp-content/uploads/2019/04/How-to-Sell-Digital-Products-Online.jpg);
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -16,8 +16,8 @@
     width: auto;
 }
 .form-box{
-    width: 800px;
-    height: 500px;
+    width: 500px;
+    height: 400px;
     position: relative;
     margin:6% auto;
     background: whitesmoke;

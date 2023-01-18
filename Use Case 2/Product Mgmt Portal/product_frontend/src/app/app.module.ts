@@ -14,7 +14,7 @@ import { AuthGuard } from './Auth/auth.guard';
 import { AuthInterceptor } from './Auth/auth.interceptor';
 import { UserService } from './Services/user.service';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
-import { GetallbooksComponent } from './Components/getallbooks/getallbooks.component';
+import { GetallproductsComponent } from './Components/getallproducts/getallproducts.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,7 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     ForbiddenComponent,
     RegisterUserComponent,
-    GetallbooksComponent,
+    GetallproductsComponent,
     FooterComponent
   ],
   imports: [

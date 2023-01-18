@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="">Home</a>
+          <a class="nav-link" routerLink="" *ngIf="!isLoggedIn()">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Merchant'])">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/getallbooks" *ngIf="userService.roleMatch(['Merchant'])">All Products</a>
+          <a class="nav-link" routerLink="/getallproducts" *ngIf="userService.roleMatch(['Merchant'])">All Products</a>
         </li>      
       </ul>
       <label class="user" *ngIf="isLoggedIn()">Hello!!,{{userName}}</label>

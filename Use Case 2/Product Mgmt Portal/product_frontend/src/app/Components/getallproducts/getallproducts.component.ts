@@ -4,11 +4,11 @@ import { BookService } from 'src/app/Services/book.service';
 import { UserAuthService } from 'src/app/Services/user-auth.service';
 
 @Component({
-  selector: 'app-getallbooks',
-  templateUrl: './getallbooks.component.html',
-  styleUrls: ['./getallbooks.component.css']
+  selector: 'app-getallproducts',
+  templateUrl: './getallproducts.component.html',
+  styleUrls: ['./getallproducts.component.css']
 })
-export class GetallbooksComponent implements OnInit {
+export class GetallproductsComponent implements OnInit {
 
   constructor(private bookService: BookService) { }
   

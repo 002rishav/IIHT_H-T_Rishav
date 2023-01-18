@@ -5,14 +5,14 @@ import { AdminComponent } from './Components/admin/admin.component';
 import { ForbiddenComponent } from './Components/forbidden/forbidden.component';
 import { AuthGuard } from './Auth/auth.guard';
 import { RegisterUserComponent } from './Components/register-user/register-user.component';
-import { GetallbooksComponent } from './Components/getallbooks/getallbooks.component';
+import { GetallproductsComponent } from './Components/getallproducts/getallproducts.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Merchant']} },
   { path: '', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'register_user', component: RegisterUserComponent },
-  { path: 'getallbooks', component: GetallbooksComponent }
+  { path: 'getallproducts', component: GetallproductsComponent }
 ];
 
 @NgModule({
