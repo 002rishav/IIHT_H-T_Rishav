@@ -26,7 +26,7 @@ import java.util.concurrent.Executors;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository ;
-    
+
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
 
@@ -42,10 +42,8 @@ public class ProductServiceImpl implements ProductService {
             		.price(productSaveRequest.getPrice())
             		.build();
 
-            ExecutorService executorService = Executors.newSingleThreadExecutor();
-            executorService.execute(() -> {
-            	productRepository.save(product);
-            });
+            productRepository.save(product);
+
             Response response = Response.builder()
                     .status(HttpStatus.CREATED.value())
                     .message(PRODUCT_SAVED_SUCCESSFULLY)
@@ -122,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
             response = Response.builder()
                     .status(500)
                     .message("Data not found").build();
-            return ResponseEntity.ok(0);
+            return ResponseEntity.ok(response);
         }
         Product product = optionalProduct.get();
         return ResponseEntity.ok(product.getId());

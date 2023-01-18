@@ -15,7 +15,16 @@ public class MerchantConstraintValidator implements ConstraintValidator<Merchant
 			if(merchant.getEmail().isEmpty() || !merchant.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-z]{2,3}")) {
 				throw new IllegalArgumentException();
 			}
-		}catch(IllegalArgumentException ex) {
+			else if(merchant.getUserFirstName().isEmpty()) {
+				throw new NullPointerException();
+			}
+			else if(merchant.getUserLastName().isEmpty()) {
+				throw new NullPointerException();
+			}
+			else if(merchant.getUserPassword().isEmpty()) {
+				throw new NullPointerException();
+			}
+		}catch(Exception ex) {
 			throw new GlobalException(ErrorCodes.PRODUCT_EXP_001);
 		}
 		return true;

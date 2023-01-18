@@ -13,11 +13,17 @@ public class ProductConstraintValidator implements ConstraintValidator<ProductCo
 	@Override
 	public boolean isValid(SaveProductResponse saveProductResponse, ConstraintValidatorContext context) {
 		try{
-			if(saveProductResponse.getPrice()<0) {
+			if(saveProductResponse.getPrice()<=0) {
 				throw new IllegalArgumentException();
-		 }
+			}
+			else if(saveProductResponse.getDescription().isEmpty()) {
+				throw new NullPointerException();
+			}
+			else if(saveProductResponse.getName().isEmpty()) {
+				throw new NullPointerException();
+			}
 		}
-		catch(IllegalArgumentException ex) {
+		catch(Exception ex) {
 			throw new GlobalException(ErrorCodes.PRODUCT_EXP_001);
 		}
 		return true;
