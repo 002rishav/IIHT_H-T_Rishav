@@ -1,4 +1,4 @@
-package com.example.product.service.impl;
+package com.example.product.utility;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.springframework.data.mongodb.core.FindAndModifyOptions.options
 
 @Service
 @RequiredArgsConstructor
-public class SequenceGeneratorService {
+public class SequenceGenerator {
 
 	@Autowired
     private MongoOperations mongoOperations;

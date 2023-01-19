@@ -1,8 +1,7 @@
-package com.user.service.impl;
+package com.user.utility;
 
 import com.user.entity.JwtResponse;
 import com.user.entity.Merchant;
-import com.user.utility.JwtUtility;
 import com.user.repository.MerchantRepo;
 import com.user.entity.JwtRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +65,7 @@ public class JwtService implements UserDetailsService {
         return authorities;
     }
 
-    private void authenticate(String userName, String userPassword) throws Exception {
+    public void authenticate(String userName, String userPassword) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
         } catch (DisabledException e) {

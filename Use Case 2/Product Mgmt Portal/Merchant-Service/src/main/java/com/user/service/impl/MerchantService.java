@@ -1,6 +1,7 @@
 package com.user.service.impl;
 
 import com.user.repository.RoleRepo;
+import com.user.utility.SequenceGenerator;
 import com.user.repository.MerchantRepo;
 import com.user.entity.Role;
 import com.user.entity.Merchant;
@@ -23,7 +24,7 @@ public class MerchantService {
     private RoleRepo roleRepo;
     
     @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
+    private SequenceGenerator sequenceGenerator;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -35,7 +36,7 @@ public class MerchantService {
         merchant.setRole(userRoles);
         merchant.setUserPassword(getEncodedPassword(merchant.getUserPassword()));
 
-        merchant.setId(sequenceGeneratorService.getSequenceNumber(Merchant.SEQUENCE_NAME));
+        merchant.setId(sequenceGenerator.getSequenceNumber(Merchant.SEQUENCE_NAME));
         return merchantRepo.save(merchant);
     }
 

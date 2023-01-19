@@ -1,7 +1,7 @@
 package com.user.controller;
 
 import com.user.entity.JwtResponse;
-import com.user.service.impl.JwtService;
+import com.user.utility.JwtService;
 import com.user.entity.JwtRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

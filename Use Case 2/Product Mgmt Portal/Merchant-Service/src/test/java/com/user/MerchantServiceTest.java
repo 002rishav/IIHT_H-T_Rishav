@@ -1,11 +1,12 @@
 package com.user;
 
 import com.user.entity.Role;
-import com.user.service.impl.SequenceGeneratorService;
 import com.user.entity.Merchant;
 import com.user.repository.RoleRepo;
 import com.user.repository.MerchantRepo;
 import com.user.service.impl.MerchantService;
+import com.user.utility.SequenceGenerator;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -40,7 +41,7 @@ public class MerchantServiceTest {
     PasswordEncoder passwordEncoder;
     
     @Mock
-    private SequenceGeneratorService sequenceGeneratorService;
+    private SequenceGenerator sequenceGenerator;
 
     @Test
     public void registerNewMerchantTest(){
@@ -50,7 +51,7 @@ public class MerchantServiceTest {
         Mockito.lenient().when(roleRepo.save(role)).thenReturn(role);
         Mockito.lenient().when(merchantRepo.save(merchant)).thenReturn(merchant);
         Mockito.when(roleRepo.findById("Merchant")).thenReturn(Optional.of(role));
-        Mockito.doReturn(1).when(sequenceGeneratorService).getSequenceNumber(any());
+        Mockito.doReturn(1).when(sequenceGenerator).getSequenceNumber(any());
         userService.registerNewMerchant(merchant);
     }
 

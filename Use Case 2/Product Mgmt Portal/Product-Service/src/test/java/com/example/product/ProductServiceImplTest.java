@@ -1,21 +1,29 @@
 package com.example.product;
 
 import com.example.product.entity.Product;
+import com.example.product.exception.GlobalException;
 import com.example.product.nonentity.ProductSaveRequest;
 import com.example.product.nonentity.Response;
 import com.example.product.repository.ProductRepository;
 import com.example.product.service.impl.ProductServiceImpl;
+import com.example.product.utility.SequenceGenerator;
+
 import org.mockito.*;
-import com.example.product.service.impl.SequenceGeneratorService;
+import org.junit.Rule;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.rules.ExpectedException;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,8 +39,11 @@ public class ProductServiceImplTest {
     ProductSaveRequest productSaveRequest;
 
     @Mock
-    private SequenceGeneratorService sequenceGeneratorService;
+    private SequenceGenerator sequenceGenerator;
 
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+    
     @Test
     public void getProductByIdWhenProductIsPresentTest(){
         int id = 1;
@@ -117,9 +128,9 @@ public class ProductServiceImplTest {
     
     @Test
     public void saveProductTest(){
-//    	lenient().when(sequenceGeneratorService.getSequenceNumber(any())).thenReturn(1);
+//    	lenient().when(sequenceGenerator.getSequenceNumber(any())).thenReturn(1);
         MockitoAnnotations.openMocks(this);
-        Mockito.doReturn(1).when(sequenceGeneratorService).getSequenceNumber(any());
+        Mockito.doReturn(1).when(sequenceGenerator).getSequenceNumber(any());
         Product mockProduct = Product.builder().id(1).name("XYZ")
                 .description("ABC")
                 .price(1000).build();
@@ -133,6 +144,18 @@ public class ProductServiceImplTest {
     }
     
     @Test
+    public void saveProductExceptionTest() {
+//    	Mockito.doReturn(1).when(sequenceGenerator).getSequenceNumber(any());
+        Product mockProduct = Product.builder().id(1).name("XYZ")
+                .description("ABC")
+                .price(1000).build();
+        Mockito.lenient().when(productRepository.save(any())).thenReturn(mockProduct);
+//        exception.expect(GlobalException.class);
+//        ResponseEntity responseEntity = productService.saveProduct(productSaveRequest);
+        Assertions.assertThrows(GlobalException.class, () -> productService.saveProduct(productSaveRequest));       
+    }
+
+	@Test
     public void deleteProductWhenProductIsPresentTest() {
     	int id = 1;
     	Product product = Product.builder().build();
@@ -154,22 +177,5 @@ public class ProductServiceImplTest {
                 .message("Data not found").build();
         assertEquals(response,responseEntity.getBody());
     }
-
-//    @Test
-//    public void saveBookExceptionTest(){
-//        BookSaveRequest bookSaveRequest = BookSaveRequest.builder()
-//                .logo("abc")
-//                .author("Rishav")
-//                .price(100)
-//                .active(true)
-//                .publisher("XYZ")
-//                .publishedDate(LocalDateTime.now())
-//                .content("abc")
-//                .category("Funny")
-//                .title("Test").build();
-//        String authorId = "abc";
-//        Mockito.lenient().when(bookRepository.save(any())).thenThrow(new RuntimeException());
-//        bookService.saveBook(bookSaveRequest,authorId);
-////    }
 
 }

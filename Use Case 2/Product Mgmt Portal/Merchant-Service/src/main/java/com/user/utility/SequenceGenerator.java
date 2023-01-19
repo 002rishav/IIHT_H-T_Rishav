@@ -1,4 +1,4 @@
-package com.user.service.impl;
+package com.user.utility;
 
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.user.entity.DbSequence;
 
 @Service
-public class SequenceGeneratorService {
+public class SequenceGenerator {
 
 
     @Autowired

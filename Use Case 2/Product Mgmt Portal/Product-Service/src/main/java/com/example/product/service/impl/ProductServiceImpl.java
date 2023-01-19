@@ -7,6 +7,7 @@ import com.example.product.nonentity.ProductSaveRequest;
 import com.example.product.nonentity.Response;
 import com.example.product.repository.ProductRepository;
 import com.example.product.service.ProductService;
+import com.example.product.utility.SequenceGenerator;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository ;
 
     @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
+    private SequenceGenerator sequenceGenerator;
 
     private static final String PRODUCT_SAVED_SUCCESSFULLY = "Saved data successfully";
 
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseEntity saveProduct(ProductSaveRequest productSaveRequest) {
         try{
             Product product = Product.builder()
-            		.id(sequenceGeneratorService.getSequenceNumber(Product.SEQUENCE_NAME))
+            		.id(sequenceGenerator.getSequenceNumber(Product.SEQUENCE_NAME))
             		.name(productSaveRequest.getName())
             		.description(productSaveRequest.getDescription())
             		.price(productSaveRequest.getPrice())
