@@ -5,7 +5,7 @@ import lombok.Setter;
 
 public enum ErrorCodes {
 
-    PRODUCT_EXP_001(500 , "Unable to save data into database");
+    PRODUCT_EXP_001(400 , "Unable to save data into database");
 
     @Getter
     @Setter

@@ -61,7 +61,7 @@ public class ProductServiceUtility implements IProductService {
         }
         else{
             Response response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("Product Not Found")
                     .build();
             return ResponseEntity.ok(response);
@@ -92,7 +92,7 @@ public class ProductServiceUtility implements IProductService {
         }
         else{
             Response response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("Product Not Found")
                     .build();
             return ResponseEntity.ok(response);

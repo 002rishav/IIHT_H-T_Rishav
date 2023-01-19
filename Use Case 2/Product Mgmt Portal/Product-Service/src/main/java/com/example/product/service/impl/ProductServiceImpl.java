@@ -71,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
         {
             log.info("Empty product entity found");
             response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("Data not found").build();
             return ResponseEntity.ok(response);
         }
@@ -100,7 +100,7 @@ public class ProductServiceImpl implements ProductService {
         {
             log.info("No products found");
             response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("No Products found").build();
             return ResponseEntity.ok(response);
         }
@@ -122,9 +122,9 @@ public class ProductServiceImpl implements ProductService {
         {
             log.info("Empty product entity found");
             response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("Data not found").build();
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(0);
         }
         Product product = optionalProduct.get();
         return ResponseEntity.ok(product.getId());
@@ -138,7 +138,7 @@ public class ProductServiceImpl implements ProductService {
         {
             log.info("Empty product entity found");
             response = Response.builder()
-                    .status(500)
+                    .status(404)
                     .message("Data not found").build();
             return ResponseEntity.ok(response);
         }

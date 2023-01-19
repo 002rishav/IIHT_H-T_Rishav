@@ -18,7 +18,7 @@
           <a class="nav-link" routerLink="/admin" *ngIf="userService.roleMatch(['Merchant'])">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/getallproducts" *ngIf="userService.roleMatch(['Merchant'])">All Products</a>
+          <a class="nav-link" routerLink="/products" *ngIf="userService.roleMatch(['Merchant'])">All Products</a>
         </li>      
       </ul>
       <label class="user" *ngIf="isLoggedIn()">Hello!!,{{userName}}</label>

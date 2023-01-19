@@ -12,6 +12,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(GlobalException.class)
     public ResponseEntity handleGlobalException(GlobalException globalException)
     {
-        return new ResponseEntity<>(globalException.getError() , HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(globalException.getError() , HttpStatus.BAD_REQUEST);
     }
 }

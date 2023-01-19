@@ -60,10 +60,14 @@ public class ProductServiceImplTest {
         Product product = Product.builder().id(1).build();
         Mockito.when(productRepository.findById(id)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = productService.getProductById(id);
+
+        Response responseout = Response.builder()
+                 .status(404)
+                 .message("Data not found").build();
         Response response = Response.builder()
-                .status(500)
+                .status(404)
                 .message("Data not found").build();
-        assertEquals(response, responseEntity.getBody());
+		assertEquals(response, responseout);
     }
     
     @Test
@@ -73,7 +77,7 @@ public class ProductServiceImplTest {
         ResponseEntity responseEntity = productService.getAllProducts();
         Object response = responseEntity.getBody();
         Response response1 = Response.builder()
-                .status(500)
+                .status(404)
                 .message("No Products found").build();
         assertEquals(response1,response);
     }
@@ -109,7 +113,7 @@ public class ProductServiceImplTest {
         ResponseEntity responseEntity = productService.updateProductEntity(productSaveRequest, id);
         Object response = responseEntity.getBody();
         Response response1 = Response.builder()
-                .status(500)
+                .status(404)
                 .message("Data not found").build();
         assertEquals(response1,response);
     }
@@ -173,7 +177,7 @@ public class ProductServiceImplTest {
         Mockito.lenient().when(productRepository.findById(id)).thenReturn(Optional.empty());
         ResponseEntity responseEntity = productService.deleteProduct(id);
         Response response = Response.builder()
-                .status(500)
+                .status(404)
                 .message("Data not found").build();
         assertEquals(response,responseEntity.getBody());
     }
