@@ -42,7 +42,10 @@ public class ProductServiceImpl implements ProductService {
             		.price(productSaveRequest.getPrice())
             		.build();
 
-            productRepository.save(product);
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            executorService.execute(() -> {
+            	productRepository.save(product);
+            });
 
             Response response = Response.builder()
                     .status(HttpStatus.CREATED.value())

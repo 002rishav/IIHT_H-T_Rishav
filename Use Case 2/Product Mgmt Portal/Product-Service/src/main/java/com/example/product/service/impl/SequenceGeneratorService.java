@@ -18,6 +18,7 @@ import static org.springframework.data.mongodb.core.FindAndModifyOptions.options
 @RequiredArgsConstructor
 public class SequenceGeneratorService {
 
+	@Autowired
     private MongoOperations mongoOperations;
 
 

@@ -1,8 +1,9 @@
-package com.user.service.impl;
+package com.user.utility;
 
 import com.user.nonentity.Response;
 import com.user.output.SaveProductResponse;
 import com.user.service.IProductService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements IProductService {
+public class ProductServiceUtility implements IProductService {
 
     private final RestTemplate restTemplate;
 

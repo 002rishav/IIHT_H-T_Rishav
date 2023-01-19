@@ -17,19 +17,19 @@ export class BookService {
     ) { }
 
   public addProduct(productData: any){
-    return this.httpClient.post(this.PATH_OF_API + '/api/v1' , productData);
+    return this.httpClient.post(this.PATH_OF_API + '/api/v1/product' , productData);
   }
 
   public getallproducts(){
-    return this.httpClient.get(this.PATH_OF_API + '/api/v1/AllProducts');
+    return this.httpClient.get(this.PATH_OF_API + '/api/v1/product');
   }
 
   public updateproduct(productData: any, productId: string){
-    return this.httpClient.put(this.PATH_OF_API + '/api/v1/' + productId, productData);
+    return this.httpClient.put(this.PATH_OF_API + '/api/v1/product/' + productId, productData);
   }
 
   public delete(productId: string){
-    return this.httpClient.delete(this.PATH_OF_API + '/api/v1/' + productId);
+    return this.httpClient.delete(this.PATH_OF_API + '/api/v1/product/' + productId);
   }
 
 }
