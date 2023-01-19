@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "41f03b7f-ffa4-4211-8c65-773a08f7ae8e",
+		"name": "Merchant-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\" : \"Merchant\",\r\n    \"roleDescription\" : \"Merchant have all products access\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/createNewRole",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"createNewRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Merchant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"Rishav@gmail.com\",\r\n    \"userFirstName\" : \"Parnava\",\r\n    \"userLastName\" : \"Kundu\",\r\n    \"userPassword\" : \"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/reg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"reg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jwt Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"002rishav@gmail.com\",\r\n    \"userPassword\" : \"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0MTIzNTE5LCJpYXQiOjE2NzQxMDU1MTl9.0feipJj8U9T4kOtsT_DxU1vTTdNffv7oGoij9IFQU3waNm_kmzU4zhhmtAVYHrnKFm0K_PuNNN7Ns8tjsFPDGg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0MTIzNTE5LCJpYXQiOjE2NzQxMDU1MTl9.0feipJj8U9T4kOtsT_DxU1vTTdNffv7oGoij9IFQU3waNm_kmzU4zhhmtAVYHrnKFm0K_PuNNN7Ns8tjsFPDGg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Mobile\",\r\n    \"description\" : \"Electronic Product\",\r\n    \"price\" : 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0MTI1NzE0LCJpYXQiOjE2NzQxMDc3MTR9.EYPqH2oYstsmVU-Jjab-zr5d7kufXHiUH44uv5sgxqlbR1tbtEvAlb8OjAZMUE4FbjtpAYeEX2eyP_nwS9DazA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0MTIzNTE5LCJpYXQiOjE2NzQxMDU1MTl9.0feipJj8U9T4kOtsT_DxU1vTTdNffv7oGoij9IFQU3waNm_kmzU4zhhmtAVYHrnKFm0K_PuNNN7Ns8tjsFPDGg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Mobile\",\r\n    \"description\" : \"Electronic Gadget\",\r\n    \"price\" : 20000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
