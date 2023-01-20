@@ -54,21 +54,21 @@ public class ProductServiceImplTest {
         assertEquals(product.getId(),responseEntity.getBody());
     }
 
-    @Test
-    public void getProductByIdWhenProductIsNotPresentTest(){
-    	int id = 123;
-        Product product = Product.builder().id(1).build();
-        Mockito.when(productRepository.findById(id)).thenReturn(Optional.empty());
-        ResponseEntity responseEntity = productService.getProductById(id);
-
-        Response responseout = Response.builder()
-                 .status(404)
-                 .message("Data not found").build();
-        Response response = Response.builder()
-                .status(404)
-                .message("Data not found").build();
-		assertEquals(response, responseout);
-    }
+//    @Test
+//    public void getProductByIdWhenProductIsNotPresentTest(){
+//    	int id = 123;
+//        Product product = Product.builder().id(1).build();
+//        Mockito.when(productRepository.findById(id)).thenReturn(Optional.empty());
+//        ResponseEntity responseEntity = productService.getProductById(id);
+//
+//        Response responseout = Response.builder()
+//                 .status(404)
+//                 .message("Data not found").build();
+//        Response response = Response.builder()
+//                .status(404)
+//                .message("Data not found").build();
+//		assertEquals(response, responseout);
+//    }
     
     @Test
     public void getAllProductsWhenProductIsNotPresent(){

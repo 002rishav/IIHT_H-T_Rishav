@@ -7,7 +7,7 @@ spring:
       matching-strategy: ant-path-matcher
   data:
     mongodb:
-      host: localhost
+      host: mongo-container
       port: 27017
       database: Merchants
   main:

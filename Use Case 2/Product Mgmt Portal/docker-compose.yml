@@ -1,0 +1,20 @@
+version: "2"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo-container
+    hostname: localhost
+    ports:
+      - 27017:27017
+  product-service:
+    build: Product-Service/
+    container_name: product-container
+    hostname: localhost
+    ports:
+      - 8087:8087
+  merchant-service:
+    build: Merchant-Service/
+    container_name: merchant-container
+    hostname: localhost
+    ports:
+      - 9090:9090

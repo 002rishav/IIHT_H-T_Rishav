@@ -25,7 +25,7 @@ public class ProductServiceUtility implements IProductService {
 
     @Override
     public ResponseEntity saveProduct(SaveProductResponse saveProductResponse) {
-        String url = "http://localhost:8087/productsMicroService/api/v1";
+        String url = "http://product-container:8087/productsMicroService/api/v1";
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<SaveProductResponse> httpEntity = new HttpEntity<>(saveProductResponse, httpHeaders);
@@ -41,7 +41,7 @@ public class ProductServiceUtility implements IProductService {
 
     @Override
     public ResponseEntity updateProduct(SaveProductResponse saveProductResponse, int id) {
-        String url = "http://localhost:8087/productsMicroService/api/v1/{id}";
+        String url = "http://product-container:8087/productsMicroService/api/v1/{id}";
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<SaveProductResponse> httpEntity = new HttpEntity<>(saveProductResponse, httpHeaders);
@@ -69,18 +69,18 @@ public class ProductServiceUtility implements IProductService {
     }
 
     public Integer getProductById(int id){
-        String url = "http://localhost:8087/productsMicroService/api/v1/"+id;
+        String url = "http://product-container:8087/productsMicroService/api/v1/"+id;
         return restTemplate.getForEntity(url,Integer.class).getBody();
     }
 
     public Object getAllProducts(){
-        String url = "http://localhost:8087/productsMicroService/api/v1/AllProducts";
+        String url = "http://product-container:8087/productsMicroService/api/v1/AllProducts";
         return restTemplate.getForObject(url,Object.class);
     }
 
 	@Override
 	public ResponseEntity deleteProduct(int id) {
-		String url = "http://localhost:8087/productsMicroService/api/v1/" + id;
+		String url = "http://product-container:8087/productsMicroService/api/v1/" + id;
 
         if(Objects.equals(id, getProductById(id))){
             restTemplate.delete(url);

@@ -9,7 +9,7 @@ spring:
         matching-strategy: ant-path-matcher
   data:
     mongodb:
-      host: localhost
+      host: mongo-container
       port: 27017
       database: Products
 #    url:  jdbc:mysql://rds-demo.c2ozhw4mlwdz.us-east-1.rds.amazonaws.com:3306/library

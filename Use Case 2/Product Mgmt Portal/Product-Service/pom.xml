@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>book</artifactId>
+	<artifactId>product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>book</name>
-	<description>Book </description>
+	<name>product</name>
+	<description>Product </description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -125,6 +125,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Product-Service</finalName>
 	</build>
 
 	<dependencyManagement>
