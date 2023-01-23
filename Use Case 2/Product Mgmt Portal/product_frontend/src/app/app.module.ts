@@ -17,6 +17,8 @@ import { RegisterUserComponent } from './Components/register-user/register-user.
 import { GetallproductsComponent } from './Components/getallproducts/getallproducts.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthGuard,

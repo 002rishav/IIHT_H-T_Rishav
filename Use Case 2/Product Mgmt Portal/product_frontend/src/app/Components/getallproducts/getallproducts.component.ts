@@ -13,6 +13,7 @@ export class GetallproductsComponent implements OnInit {
   constructor(private bookService: BookService) { }
   
   productDetails: any;
+  p: number = 1;
   
   ngOnInit() {
     this.bookService.getallproducts().subscribe(
@@ -79,6 +80,12 @@ export class GetallproductsComponent implements OnInit {
         alert("Error occurred in deleting");
       }
     );
+  }
+  key:string = 'id';
+  reverse: boolean = false;
+  sort(key: string){
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
 
