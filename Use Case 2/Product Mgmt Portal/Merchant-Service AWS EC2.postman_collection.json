@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "e40890c5-b4ed-42e0-88c5-969b5626e6a5",
+		"name": "Merchant-Service AWS EC2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roleName\" : \"Merchant\",\r\n    \"roleDescription\" : \"Merchant have all products access\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/createNewRole",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"createNewRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Merchant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"002rishav@gmail.com\",\r\n    \"userFirstName\" : \"Rishav\",\r\n    \"userLastName\" : \"Roy\",\r\n    \"userPassword\" : \"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/reg",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"reg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jwt Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"002rishav@gmail.com\",\r\n    \"userPassword\" : \"pass@word1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/auth",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0NjAwODM4LCJpYXQiOjE2NzQ1ODI4Mzh9.9gznDv_LqDmFBv7c4edwe5jaLjGimzzw1gmDjJfIBtPLikUVDfA2M-fAXdF6UnR8JrnxzWeq9JL4VV6NAToC-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0NjAwODM4LCJpYXQiOjE2NzQ1ODI4Mzh9.9gznDv_LqDmFBv7c4edwe5jaLjGimzzw1gmDjJfIBtPLikUVDfA2M-fAXdF6UnR8JrnxzWeq9JL4VV6NAToC-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Mobile\",\r\n    \"description\" : \"Electronic Product\",\r\n    \"price\" : 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/product",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0NjAwODM4LCJpYXQiOjE2NzQ1ODI4Mzh9.9gznDv_LqDmFBv7c4edwe5jaLjGimzzw1gmDjJfIBtPLikUVDfA2M-fAXdF6UnR8JrnxzWeq9JL4VV6NAToC-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/product/:id",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDJyaXNoYXZAZ21haWwuY29tIiwiZXhwIjoxNjc0NjAwODM4LCJpYXQiOjE2NzQ1ODI4Mzh9.9gznDv_LqDmFBv7c4edwe5jaLjGimzzw1gmDjJfIBtPLikUVDfA2M-fAXdF6UnR8JrnxzWeq9JL4VV6NAToC-A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Mobile\",\r\n    \"description\" : \"Electronic Gadget\",\r\n    \"price\" : 30000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-44-202-27-100.compute-1.amazonaws.com:9090/api/v1/product/:id",
+					"protocol": "http",
+					"host": [
+						"ec2-44-202-27-100",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,2 +1,8 @@
+aws code commit cred
 username : rishav.roy3@mml.local-at-527488999673
 password : eaz47Bw490kefdwGTEvxTlDLhxyIgiD+lTjbM64+wKI=
+
+
+access key cred
+access key - AKIAXVUGLMD4THQ22RJY
+password - S6s4VS4dOGGwYQc3Iufg+UEXP7qaQYz+yO5wYvlL

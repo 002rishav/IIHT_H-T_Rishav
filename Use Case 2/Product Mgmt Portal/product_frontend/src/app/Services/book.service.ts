@@ -7,7 +7,7 @@ import { UserAuthService } from './user-auth.service';
 })
 export class BookService {
 
-  PATH_OF_API = 'http://localhost:9090';
+  PATH_OF_API = 'http://ec2-44-202-27-100.compute-1.amazonaws.com:9090';
 
   response :any;
 
