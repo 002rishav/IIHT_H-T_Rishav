@@ -1,0 +1,7 @@
+{
+    "/*": {
+        "target": "https://6q8643y3sg.execute-api.us-east-1.amazonaws.com/UAT",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GetallproductsComponent } from './getallproducts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 describe('GetallproductsComponent', () => {
   let component: GetallproductsComponent;
@@ -9,7 +11,7 @@ describe('GetallproductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule],
+      imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule, NgxPaginationModule, Ng2OrderModule],
       declarations: [ GetallproductsComponent ]
     })
     .compileComponents();
