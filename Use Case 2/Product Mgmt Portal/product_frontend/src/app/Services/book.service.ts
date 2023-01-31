@@ -7,7 +7,7 @@ import { UserAuthService } from './user-auth.service';
 })
 export class BookService {
 
-  PATH_OF_API = 'http://3.91.204.221:9090';
+  PATH_OF_API = 'http://100.24.67.5:9090';
 
   response :any;
 
