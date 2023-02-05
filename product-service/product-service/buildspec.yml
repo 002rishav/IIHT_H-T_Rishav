@@ -1,0 +1,28 @@
+version: 0.2
+
+
+phases:
+  pre_build:
+    commands:
+      - mvn clean install
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 527488999673.dkr.ecr.us-east-1.amazonaws.com/docker-repo-rishav
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t docker-repo-rishav .
+      - docker tag docker-repo-rishav:latest 527488999673.dkr.ecr.us-east-1.amazonaws.com/docker-repo-rishav:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push 527488999673.dkr.ecr.us-east-1.amazonaws.com/docker-repo-rishav:latest
+      - echo Writing image definitions file...
+      - printf '[{"name":"Product-Service","imageUri":"527488999673.dkr.ecr.us-east-1.amazonaws.com/docker-repo-rishav:latest"}]' > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files:
+   - imagedefinitions.json
+   - target/Product-Service.jar
